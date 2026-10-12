@@ -1,4 +1,12 @@
+### Maven ###
+target/
+
+### Frontend ###
+frontend/node_modules/
+frontend/dist/
+
 ### IntelliJ IDEA ###
+.idea/
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
