@@ -660,6 +660,94 @@ Microservices where justified
 | API Documentation | ✅ Swagger UI |
 | Database Migrations | ✅ Liquibase (8 migrations) |
 | Docker | ✅ PostgreSQL via Docker Compose |
+| Frontend | ✅ React + TypeScript (Phase 8 complete) |
+| Source Control | ✅ GitHub — github.com/bbriones16/logistics |
+
+---
+
+## 22. Phase 8 — Frontend
+
+### Stack
+
+| Concern | Library |
+|---|---|
+| Framework | React 18 + TypeScript + Vite 5 |
+| Styling | Tailwind CSS v4 + custom shadcn-style components |
+| Routing | React Router v6 |
+| Server state | TanStack Query v5 |
+| Forms | React Hook Form + Zod |
+| HTTP | Axios (with JWT interceptor + 401 redirect) |
+| Auth state | React Context + localStorage |
+
+### Project structure
+
+```
+frontend/
+├── src/
+│   ├── api/          # Axios instance + one file per module
+│   │   ├── client.ts       JWT interceptor, 401 handler
+│   │   ├── auth.ts
+│   │   ├── orders.ts
+│   │   ├── inventory.ts
+│   │   ├── shipments.ts    includes trackingApi
+│   │   ├── delivery.ts
+│   │   └── reporting.ts
+│   ├── components/
+│   │   ├── ui/             Button, Card, Input, Label, Badge, Select
+│   │   ├── AppLayout.tsx   Sidebar nav + main content shell
+│   │   └── ProtectedRoute.tsx
+│   ├── context/
+│   │   └── AuthContext.tsx  login, logout, isAuthenticated
+│   ├── pages/
+│   │   ├── auth/           LoginPage (login + register)
+│   │   ├── dashboard/      DashboardPage (reporting summary)
+│   │   ├── orders/         OrdersPage, OrderDetailPage, CustomersPage
+│   │   ├── inventory/      InventoryPage
+│   │   ├── shipments/      ShipmentsPage, ShipmentDetailPage, CarriersPage
+│   │   ├── delivery/       DeliveriesPage, DriversPage, VehiclesPage
+│   │   └── tracking/       TrackPage (public)
+│   └── types/
+│       └── index.ts        TypeScript types mirroring all backend DTOs
+```
+
+### Pages
+
+| Route | Page | Auth |
+|---|---|---|
+| `/login` | Login + register form | Public |
+| `/track` | Public shipment tracker | Public |
+| `/` | Reporting dashboard — 4 summary cards + low-stock alert | Protected |
+| `/orders` | Orders list (paginated) + create form | Protected |
+| `/orders/:id` | Order detail + items breakdown | Protected |
+| `/customers` | Customers list + create form | Protected |
+| `/inventory` | Stock by warehouse + low-stock panel + receive stock | Protected |
+| `/shipments` | Shipments list (paginated) + create form | Protected |
+| `/shipments/:id` | Shipment detail + status update + tracking timeline | Protected |
+| `/carriers` | Carriers list + create form | Protected |
+| `/delivery` | Deliveries list (paginated) + assign form + inline status update | Protected |
+| `/drivers` | Drivers list + create form | Protected |
+| `/vehicles` | Vehicles list + create form | Protected |
+
+### Key implementation details
+
+- Vite dev server proxies `/api` → `http://localhost:8080` (no CORS config needed in dev)
+- Axios request interceptor attaches `Authorization: Bearer <token>` from localStorage
+- Axios response interceptor clears token and redirects to `/login` on 401
+- `totalAmount` computed on frontend from `items` (not returned by backend)
+- Shipment status transitions enforced client-side to show only valid next states
+- Delivery status update inline in the table row (select + optional POD input + button)
+- Public `/track` page requires no authentication — calls `GET /api/tracking/{trackingNumber}` directly
+- Tracking timeline displayed newest-first with a vertical timeline UI
+
+### Running the frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+App available at: `http://localhost:5173`
 
 ---
 
