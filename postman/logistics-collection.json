@@ -1,0 +1,588 @@
+{
+  "info": {
+    "name": "Logistics Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Complete API collection for the Logistics Management System. Set the `baseUrl` variable before use. Run Auth > Login first to populate the `token` variable automatically."
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080", "type": "string" },
+    { "key": "token",   "value": "",                      "type": "string" }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/auth/register", "host": ["{{baseUrl}}"], "path": ["api","auth","register"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var json = pm.response.json();",
+                  "if (json.token) { pm.collectionVariables.set('token', json.token); }"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/auth/login", "host": ["{{baseUrl}}"], "path": ["api","auth","login"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@logistics.com\",\n  \"password\": \"password123\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Customers",
+      "item": [
+        {
+          "name": "List Customers",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/customers", "host": ["{{baseUrl}}"], "path": ["api","customers"] }
+          }
+        },
+        {
+          "name": "Get Customer by ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/customers/1", "host": ["{{baseUrl}}"], "path": ["api","customers","1"] }
+          }
+        },
+        {
+          "name": "Create Customer",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/customers", "host": ["{{baseUrl}}"], "path": ["api","customers"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Acme Corp\",\n  \"email\": \"contact@acme.com\",\n  \"phone\": \"+1-555-0100\",\n  \"address\": \"123 Main St, Springfield, IL 62701\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "List Orders",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/orders?page=0&size=20&sort=createdAt,desc",
+              "host": ["{{baseUrl}}"],
+              "path": ["api","orders"],
+              "query": [
+                { "key": "page", "value": "0" },
+                { "key": "size", "value": "20" },
+                { "key": "sort", "value": "createdAt,desc" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Order by ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/orders/1", "host": ["{{baseUrl}}"], "path": ["api","orders","1"] }
+          }
+        },
+        {
+          "name": "Create Order",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/orders", "host": ["{{baseUrl}}"], "path": ["api","orders"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": 1,\n  \"items\": [\n    {\n      \"sku\": \"SKU-001\",\n      \"productName\": \"Widget A\",\n      \"quantity\": 10,\n      \"unitPrice\": 25.00\n    }\n  ],\n  \"notes\": \"Handle with care\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Order Status",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/orders/1/status", "host": ["{{baseUrl}}"], "path": ["api","orders","1","status"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"CONFIRMED\"\n}"
+            },
+            "description": "Valid statuses: CREATED, CONFIRMED, STOCK_RESERVED, PROCESSING, READY_TO_SHIP, SHIPPED, DELIVERED, RETURNED, FAILED, CANCELLED"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Warehouses",
+      "item": [
+        {
+          "name": "List Warehouses",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/warehouses", "host": ["{{baseUrl}}"], "path": ["api","warehouses"] }
+          }
+        },
+        {
+          "name": "Get Warehouse by ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/warehouses/1", "host": ["{{baseUrl}}"], "path": ["api","warehouses","1"] }
+          }
+        },
+        {
+          "name": "Create Warehouse",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/warehouses", "host": ["{{baseUrl}}"], "path": ["api","warehouses"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"WH-MAIN\",\n  \"name\": \"Main Warehouse\",\n  \"address\": \"456 Industrial Ave, Chicago, IL 60601\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "List Products",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/products", "host": ["{{baseUrl}}"], "path": ["api","products"] }
+          }
+        },
+        {
+          "name": "Get Product by ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/products/1", "host": ["{{baseUrl}}"], "path": ["api","products","1"] }
+          }
+        },
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/products", "host": ["{{baseUrl}}"], "path": ["api","products"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sku\": \"SKU-001\",\n  \"name\": \"Widget A\",\n  \"description\": \"Standard widget\",\n  \"unitOfMeasure\": \"PCS\",\n  \"lowStockThreshold\": 10\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Inventory",
+      "item": [
+        {
+          "name": "Get Stock by Warehouse",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/inventory/warehouse/1", "host": ["{{baseUrl}}"], "path": ["api","inventory","warehouse","1"] }
+          }
+        },
+        {
+          "name": "Get Stock by Product",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/inventory/product/1", "host": ["{{baseUrl}}"], "path": ["api","inventory","product","1"] }
+          }
+        },
+        {
+          "name": "Get Low Stock",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/inventory/low-stock", "host": ["{{baseUrl}}"], "path": ["api","inventory","low-stock"] }
+          }
+        },
+        {
+          "name": "Get Product Movements",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/inventory/product/1/movements?page=0&size=50",
+              "host": ["{{baseUrl}}"],
+              "path": ["api","inventory","product","1","movements"],
+              "query": [
+                { "key": "page", "value": "0" },
+                { "key": "size", "value": "50" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Receive Stock",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/inventory/receive", "host": ["{{baseUrl}}"], "path": ["api","inventory","receive"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productId\": 1,\n  \"warehouseId\": 1,\n  \"quantity\": 100,\n  \"notes\": \"Initial stock receipt\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Pick Stock",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/inventory/pick", "host": ["{{baseUrl}}"], "path": ["api","inventory","pick"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productId\": 1,\n  \"warehouseId\": 1,\n  \"quantity\": 5,\n  \"orderId\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Pack Stock",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/inventory/pack", "host": ["{{baseUrl}}"], "path": ["api","inventory","pack"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productId\": 1,\n  \"warehouseId\": 1,\n  \"quantity\": 5,\n  \"orderId\": 1\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Carriers",
+      "item": [
+        {
+          "name": "List Carriers",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/carriers", "host": ["{{baseUrl}}"], "path": ["api","carriers"] }
+          }
+        },
+        {
+          "name": "List Carriers by Medium",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/carriers?medium=LAND",
+              "host": ["{{baseUrl}}"],
+              "path": ["api","carriers"],
+              "query": [{ "key": "medium", "value": "LAND", "description": "LAND, AIR, SEA" }]
+            }
+          }
+        },
+        {
+          "name": "Get Carrier by ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/carriers/1", "host": ["{{baseUrl}}"], "path": ["api","carriers","1"] }
+          }
+        },
+        {
+          "name": "Create Carrier",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/carriers", "host": ["{{baseUrl}}"], "path": ["api","carriers"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"FEDEX\",\n  \"name\": \"FedEx\",\n  \"medium\": \"LAND\",\n  \"companyOwned\": false,\n  \"contactName\": \"Jane Smith\",\n  \"contactPhone\": \"+1-800-463-3339\"\n}"
+            },
+            "description": "medium: LAND, AIR, SEA"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Shipments",
+      "item": [
+        {
+          "name": "List Shipments",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/shipments?page=0&size=20&sort=createdAt,desc",
+              "host": ["{{baseUrl}}"],
+              "path": ["api","shipments"],
+              "query": [
+                { "key": "page", "value": "0" },
+                { "key": "size", "value": "20" },
+                { "key": "sort", "value": "createdAt,desc" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Shipment by ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/shipments/1", "host": ["{{baseUrl}}"], "path": ["api","shipments","1"] }
+          }
+        },
+        {
+          "name": "Get Shipment by Tracking Number",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/shipments/tracking/TRK-000001", "host": ["{{baseUrl}}"], "path": ["api","shipments","tracking","TRK-000001"] }
+          }
+        },
+        {
+          "name": "Create Shipment (Fulfillment)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/shipments", "host": ["{{baseUrl}}"], "path": ["api","shipments"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shipmentType\": \"FULFILLMENT\",\n  \"orderId\": 1,\n  \"carrierId\": 1,\n  \"medium\": \"LAND\",\n  \"trackingNumber\": \"TRK-000001\",\n  \"weightKg\": 2.5,\n  \"freightCost\": 15.00,\n  \"shipToAddress\": \"789 Oak St, Dallas, TX 75201\",\n  \"estimatedDeliveryDate\": \"2025-12-31\",\n  \"notes\": \"Fragile items\"\n}"
+            },
+            "description": "shipmentType: FULFILLMENT (linked to order) or STANDALONE (no order). trackingNumber required for non-company-owned carriers."
+          }
+        },
+        {
+          "name": "Create Shipment (Standalone)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/shipments", "host": ["{{baseUrl}}"], "path": ["api","shipments"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shipmentType\": \"STANDALONE\",\n  \"carrierId\": 1,\n  \"medium\": \"AIR\",\n  \"trackingNumber\": \"TRK-000002\",\n  \"cargoDescription\": \"Office supplies\",\n  \"quantity\": 50,\n  \"weightKg\": 10.0,\n  \"freightCost\": 120.00,\n  \"shipToAddress\": \"321 Pine Ave, Miami, FL 33101\",\n  \"estimatedDeliveryDate\": \"2025-12-28\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Shipment Status",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/shipments/1/status", "host": ["{{baseUrl}}"], "path": ["api","shipments","1","status"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"IN_TRANSIT\",\n  \"proofOfDelivery\": null\n}"
+            },
+            "description": "Valid statuses: CREATED, PROCESSING, READY_FOR_PICKUP, PICKED_UP, IN_TRANSIT, ARRIVED_AT_HUB, OUT_FOR_DELIVERY, DELIVERED, FAILED. proofOfDelivery required when status is DELIVERED."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tracking",
+      "item": [
+        {
+          "name": "Track by Tracking Number",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/tracking/TRK-000001", "host": ["{{baseUrl}}"], "path": ["api","tracking","TRK-000001"] }
+          }
+        },
+        {
+          "name": "Track by Shipment ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/shipments/1/tracking", "host": ["{{baseUrl}}"], "path": ["api","shipments","1","tracking"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Drivers",
+      "item": [
+        {
+          "name": "List Drivers",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/drivers", "host": ["{{baseUrl}}"], "path": ["api","drivers"] }
+          }
+        },
+        {
+          "name": "List Available Drivers",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/drivers/available", "host": ["{{baseUrl}}"], "path": ["api","drivers","available"] }
+          }
+        },
+        {
+          "name": "Get Driver by ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/drivers/1", "host": ["{{baseUrl}}"], "path": ["api","drivers","1"] }
+          }
+        },
+        {
+          "name": "Create Driver",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/drivers", "host": ["{{baseUrl}}"], "path": ["api","drivers"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Carlos Reyes\",\n  \"licenseNumber\": \"DL-987654\",\n  \"phone\": \"+1-555-0201\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Vehicles",
+      "item": [
+        {
+          "name": "List Vehicles",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/vehicles", "host": ["{{baseUrl}}"], "path": ["api","vehicles"] }
+          }
+        },
+        {
+          "name": "List Available Vehicles",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/vehicles/available", "host": ["{{baseUrl}}"], "path": ["api","vehicles","available"] }
+          }
+        },
+        {
+          "name": "Get Vehicle by ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/vehicles/1", "host": ["{{baseUrl}}"], "path": ["api","vehicles","1"] }
+          }
+        },
+        {
+          "name": "Create Vehicle",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/vehicles", "host": ["{{baseUrl}}"], "path": ["api","vehicles"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"plateNumber\": \"ABC-1234\",\n  \"vehicleType\": \"VAN\",\n  \"capacityKg\": 1000.00\n}"
+            },
+            "description": "vehicleType: MOTORCYCLE, VAN, TRUCK"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Deliveries",
+      "item": [
+        {
+          "name": "List Deliveries",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/deliveries?page=0&size=20&sort=createdAt,desc",
+              "host": ["{{baseUrl}}"],
+              "path": ["api","deliveries"],
+              "query": [
+                { "key": "page", "value": "0" },
+                { "key": "size", "value": "20" },
+                { "key": "sort", "value": "createdAt,desc" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Delivery by ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/deliveries/1", "host": ["{{baseUrl}}"], "path": ["api","deliveries","1"] }
+          }
+        },
+        {
+          "name": "Create Delivery",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/deliveries", "host": ["{{baseUrl}}"], "path": ["api","deliveries"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shipmentId\": 1,\n  \"driverId\": 1,\n  \"vehicleId\": 1,\n  \"scheduledDate\": \"2025-12-30\",\n  \"notes\": \"Call before delivery\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Delivery Status",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/deliveries/1/status", "host": ["{{baseUrl}}"], "path": ["api","deliveries","1","status"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"OUT_FOR_DELIVERY\",\n  \"proofOfDelivery\": null\n}"
+            },
+            "description": "Valid statuses: ASSIGNED, OUT_FOR_DELIVERY, DELIVERED, FAILED, CANCELLED. proofOfDelivery required when status is DELIVERED."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reports",
+      "item": [
+        {
+          "name": "Order Summary",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/reports/orders", "host": ["{{baseUrl}}"], "path": ["api","reports","orders"] }
+          }
+        },
+        {
+          "name": "Shipment Summary",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/reports/shipments", "host": ["{{baseUrl}}"], "path": ["api","reports","shipments"] }
+          }
+        },
+        {
+          "name": "Delivery Summary",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/reports/deliveries", "host": ["{{baseUrl}}"], "path": ["api","reports","deliveries"] }
+          }
+        },
+        {
+          "name": "Inventory Summary",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/reports/inventory/summary", "host": ["{{baseUrl}}"], "path": ["api","reports","inventory","summary"] }
+          }
+        },
+        {
+          "name": "Low Stock Report",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/reports/inventory/low-stock", "host": ["{{baseUrl}}"], "path": ["api","reports","inventory","low-stock"] }
+          }
+        }
+      ]
+    }
+  ]
+}
