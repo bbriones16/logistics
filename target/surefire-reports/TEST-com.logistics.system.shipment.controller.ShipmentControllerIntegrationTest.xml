@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.logistics.system.shipment.controller.ShipmentControllerIntegrationTest" time="3.606" tests="19" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/benjie/projects/logistics/target/test-classes:/Users/benjie/projects/logistics/target/classes:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-starter-web/3.3.0/spring-boot-starter-web-3.3.0.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-starter/3.3.0/spring-boot-starter-3.3.0.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot/3.3.0/spring-boot-3.3.0.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.3.0/spring-boot-autoconfigure-3.3.0.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.3.0/spring-boot-starter-logging-3.3.0.jar:/Users/benjie/.m2/repository/ch/qos/logback/logback-classic/1.5.6/logback-classic-1.5.6.jar:/Users/benjie/.m2/repository/ch/qos/logback/logback-core/1.5.6/logback-core-1.5.6.jar:/Users/benjie/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.23.1/log4j-to-slf4j-2.23.1.jar:/Users/benjie/.m2/repository/org/apache/logging/log4j/log4j-api/2.23.1/log4j-api-2.23.1.jar:/Users/benjie/.m2/repository/org/slf4j/jul-to-slf4j/2.0.13/jul-to-slf4j-2.0.13.jar:/Users/benjie/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-starter-json/3.3.0/spring-boot-starter-json-3.3.0.jar:/Users/benjie/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.17.1/jackson-datatype-jdk8-2.17.1.jar:/Users/benjie/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.17.1/jackson-datatype-jsr310-2.17.1.jar:/Users/benjie/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.17.1/jackson-module-parameter-names-2.17.1.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/3.3.0/spring-boot-starter-tomcat-3.3.0.jar:/Users/benjie/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.24/tomcat-embed-core-10.1.24.jar:/Users/benjie/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.24/tomcat-embed-websocket-10.1.24.jar:/Users/benjie/.m2/repository/org/springframework/spring-web/6.1.8/spring-web-6.1.8.jar:/Users/benjie/.m2/repository/org/springframework/spring-beans/6.1.8/spring-beans-6.1.8.jar:/Users/benjie/.m2/repository/io/micrometer/micrometer-observation/1.13.0/micrometer-observation-1.13.0.jar:/Users/benjie/.m2/repository/io/micrometer/micrometer-commons/1.13.0/micrometer-commons-1.13.0.jar:/Users/benjie/.m2/repository/org/springframework/spring-webmvc/6.1.8/spring-webmvc-6.1.8.jar:/Users/benjie/.m2/repository/org/springframework/spring-context/6.1.8/spring-context-6.1.8.jar:/Users/benjie/.m2/repository/org/springframework/spring-expression/6.1.8/spring-expression-6.1.8.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa/3.3.0/spring-boot-starter-data-jpa-3.3.0.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-starter-aop/3.3.0/spring-boot-starter-aop-3.3.0.jar:/Users/benjie/.m2/repository/org/aspectj/aspectjweaver/1.9.22/aspectjweaver-1.9.22.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/3.3.0/spring-boot-starter-jdbc-3.3.0.jar:/Users/benjie/.m2/repository/com/zaxxer/HikariCP/5.1.0/HikariCP-5.1.0.jar:/Users/benjie/.m2/repository/org/springframework/spring-jdbc/6.1.8/spring-jdbc-6.1.8.jar:/Users/benjie/.m2/repository/org/hibernate/orm/hibernate-core/6.5.2.Final/hibernate-core-6.5.2.Final.jar:/Users/benjie/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.1.0/jakarta.persistence-api-3.1.0.jar:/Users/benjie/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/Users/benjie/.m2/repository/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.jar:/Users/benjie/.m2/repository/org/hibernate/common/hibernate-commons-annotations/6.0.6.Final/hibernate-commons-annotations-6.0.6.Final.jar:/Users/benjie/.m2/repository/io/smallrye/jandex/3.1.2/jandex-3.1.2.jar:/Users/benjie/.m2/repository/com/fasterxml/classmate/1.7.0/classmate-1.7.0.jar:/Users/benjie/.m2/repository/net/bytebuddy/byte-buddy/1.14.16/byte-buddy-1.14.16.jar:/Users/benjie/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.5/jaxb-runtime-4.0.5.jar:/Users/benjie/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.5/jaxb-core-4.0.5.jar:/Users/benjie/.m2/repository/org/eclipse/angus/angus-activation/2.0.2/angus-activation-2.0.2.jar:/Users/benjie/.m2/repository/org/glassfish/jaxb/txw2/4.0.5/txw2-4.0.5.jar:/Users/benjie/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar:/Users/benjie/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/Users/benjie/.m2/repository/org/antlr/antlr4-runtime/4.13.0/antlr4-runtime-4.13.0.jar:/Users/benjie/.m2/repository/org/springframework/data/spring-data-jpa/3.3.0/spring-data-jpa-3.3.0.jar:/Users/benjie/.m2/repository/org/springframework/data/spring-data-commons/3.3.0/spring-data-commons-3.3.0.jar:/Users/benjie/.m2/repository/org/springframework/spring-orm/6.1.8/spring-orm-6.1.8.jar:/Users/benjie/.m2/repository/org/springframework/spring-tx/6.1.8/spring-tx-6.1.8.jar:/Users/benjie/.m2/repository/org/slf4j/slf4j-api/2.0.13/slf4j-api-2.0.13.jar:/Users/benjie/.m2/repository/org/springframework/spring-aspects/6.1.8/spring-aspects-6.1.8.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-starter-security/3.3.0/spring-boot-starter-security-3.3.0.jar:/Users/benjie/.m2/repository/org/springframework/spring-aop/6.1.8/spring-aop-6.1.8.jar:/Users/benjie/.m2/repository/org/springframework/security/spring-security-config/6.3.0/spring-security-config-6.3.0.jar:/Users/benjie/.m2/repository/org/springframework/security/spring-security-core/6.3.0/spring-security-core-6.3.0.jar:/Users/benjie/.m2/repository/org/springframework/security/spring-security-crypto/6.3.0/spring-security-crypto-6.3.0.jar:/Users/benjie/.m2/repository/org/springframework/security/spring-security-web/6.3.0/spring-security-web-6.3.0.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-starter-validation/3.3.0/spring-boot-starter-validation-3.3.0.jar:/Users/benjie/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/10.1.24/tomcat-embed-el-10.1.24.jar:/Users/benjie/.m2/repository/org/hibernate/validator/hibernate-validator/8.0.1.Final/hibernate-validator-8.0.1.Final.jar:/Users/benjie/.m2/repository/jakarta/validation/jakarta.validation-api/3.0.2/jakarta.validation-api-3.0.2.jar:/Users/benjie/.m2/repository/org/postgresql/postgresql/42.7.3/postgresql-42.7.3.jar:/Users/benjie/.m2/repository/org/checkerframework/checker-qual/3.42.0/checker-qual-3.42.0.jar:/Users/benjie/.m2/repository/org/liquibase/liquibase-core/4.27.0/liquibase-core-4.27.0.jar:/Users/benjie/.m2/repository/com/opencsv/opencsv/5.9/opencsv-5.9.jar:/Users/benjie/.m2/repository/org/apache/commons/commons-text/1.11.0/commons-text-1.11.0.jar:/Users/benjie/.m2/repository/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar:/Users/benjie/.m2/repository/org/yaml/snakeyaml/2.2/snakeyaml-2.2.jar:/Users/benjie/.m2/repository/javax/xml/bind/jaxb-api/2.3.1/jaxb-api-2.3.1.jar:/Users/benjie/.m2/repository/org/apache/commons/commons-lang3/3.14.0/commons-lang3-3.14.0.jar:/Users/benjie/.m2/repository/io/jsonwebtoken/jjwt-api/0.12.6/jjwt-api-0.12.6.jar:/Users/benjie/.m2/repository/io/jsonwebtoken/jjwt-impl/0.12.6/jjwt-impl-0.12.6.jar:/Users/benjie/.m2/repository/io/jsonwebtoken/jjwt-jackson/0.12.6/jjwt-jackson-0.12.6.jar:/Users/benjie/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.17.1/jackson-databind-2.17.1.jar:/Users/benjie/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.17.1/jackson-annotations-2.17.1.jar:/Users/benjie/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.17.1/jackson-core-2.17.1.jar:/Users/benjie/.m2/repository/org/springdoc/springdoc-openapi-starter-webmvc-ui/2.5.0/springdoc-openapi-starter-webmvc-ui-2.5.0.jar:/Users/benjie/.m2/repository/org/springdoc/springdoc-openapi-starter-webmvc-api/2.5.0/springdoc-openapi-starter-webmvc-api-2.5.0.jar:/Users/benjie/.m2/repository/org/springdoc/springdoc-openapi-starter-common/2.5.0/springdoc-openapi-starter-common-2.5.0.jar:/Users/benjie/.m2/repository/io/swagger/core/v3/swagger-core-jakarta/2.2.21/swagger-core-jakarta-2.2.21.jar:/Users/benjie/.m2/repository/io/swagger/core/v3/swagger-annotations-jakarta/2.2.21/swagger-annotations-jakarta-2.2.21.jar:/Users/benjie/.m2/repository/io/swagger/core/v3/swagger-models-jakarta/2.2.21/swagger-models-jakarta-2.2.21.jar:/Users/benjie/.m2/repository/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.17.1/jackson-dataformat-yaml-2.17.1.jar:/Users/benjie/.m2/repository/org/webjars/swagger-ui/5.13.0/swagger-ui-5.13.0.jar:/Users/benjie/.m2/repository/com/h2database/h2/2.2.224/h2-2.2.224.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.3.0/spring-boot-starter-test-3.3.0.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-test/3.3.0/spring-boot-test-3.3.0.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.3.0/spring-boot-test-autoconfigure-3.3.0.jar:/Users/benjie/.m2/repository/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar:/Users/benjie/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.2/jakarta.xml.bind-api-4.0.2.jar:/Users/benjie/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.3/jakarta.activation-api-2.1.3.jar:/Users/benjie/.m2/repository/net/minidev/json-smart/2.5.1/json-smart-2.5.1.jar:/Users/benjie/.m2/repository/net/minidev/accessors-smart/2.5.1/accessors-smart-2.5.1.jar:/Users/benjie/.m2/repository/org/ow2/asm/asm/9.6/asm-9.6.jar:/Users/benjie/.m2/repository/org/assertj/assertj-core/3.25.3/assertj-core-3.25.3.jar:/Users/benjie/.m2/repository/org/awaitility/awaitility/4.2.1/awaitility-4.2.1.jar:/Users/benjie/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/benjie/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.2/junit-jupiter-5.10.2.jar:/Users/benjie/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.2/junit-jupiter-api-5.10.2.jar:/Users/benjie/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/benjie/.m2/repository/org/junit/platform/junit-platform-commons/1.10.2/junit-platform-commons-1.10.2.jar:/Users/benjie/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/benjie/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.2/junit-jupiter-params-5.10.2.jar:/Users/benjie/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.2/junit-jupiter-engine-5.10.2.jar:/Users/benjie/.m2/repository/org/junit/platform/junit-platform-engine/1.10.2/junit-platform-engine-1.10.2.jar:/Users/benjie/.m2/repository/org/mockito/mockito-core/5.11.0/mockito-core-5.11.0.jar:/Users/benjie/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.16/byte-buddy-agent-1.14.16.jar:/Users/benjie/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/Users/benjie/.m2/repository/org/mockito/mockito-junit-jupiter/5.11.0/mockito-junit-jupiter-5.11.0.jar:/Users/benjie/.m2/repository/org/skyscreamer/jsonassert/1.5.1/jsonassert-1.5.1.jar:/Users/benjie/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/Users/benjie/.m2/repository/org/springframework/spring-core/6.1.8/spring-core-6.1.8.jar:/Users/benjie/.m2/repository/org/springframework/spring-jcl/6.1.8/spring-jcl-6.1.8.jar:/Users/benjie/.m2/repository/org/springframework/spring-test/6.1.8/spring-test-6.1.8.jar:/Users/benjie/.m2/repository/org/xmlunit/xmlunit-core/2.9.1/xmlunit-core-2.9.1.jar:"/>
+    <property name="java.vm.vendor" value="Eclipse Adoptium"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="catalina.useNaming" value="false"/>
+    <property name="java.vendor.url" value="https://adoptium.net/"/>
+    <property name="user.timezone" value="Asia/Manila"/>
+    <property name="org.jboss.logging.provider" value="slf4j"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="AU"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/benjie/projects/logistics/target/surefire/surefirebooter-20261012235218511_3.jar /Users/benjie/projects/logistics/target/surefire 2026-10-12T23-52-18_382-jvmRun1 surefire-20261012235218511_1tmp surefire_0-20261012235218511_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/benjie/projects/logistics/target/test-classes:/Users/benjie/projects/logistics/target/classes:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-starter-web/3.3.0/spring-boot-starter-web-3.3.0.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-starter/3.3.0/spring-boot-starter-3.3.0.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot/3.3.0/spring-boot-3.3.0.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.3.0/spring-boot-autoconfigure-3.3.0.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.3.0/spring-boot-starter-logging-3.3.0.jar:/Users/benjie/.m2/repository/ch/qos/logback/logback-classic/1.5.6/logback-classic-1.5.6.jar:/Users/benjie/.m2/repository/ch/qos/logback/logback-core/1.5.6/logback-core-1.5.6.jar:/Users/benjie/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.23.1/log4j-to-slf4j-2.23.1.jar:/Users/benjie/.m2/repository/org/apache/logging/log4j/log4j-api/2.23.1/log4j-api-2.23.1.jar:/Users/benjie/.m2/repository/org/slf4j/jul-to-slf4j/2.0.13/jul-to-slf4j-2.0.13.jar:/Users/benjie/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-starter-json/3.3.0/spring-boot-starter-json-3.3.0.jar:/Users/benjie/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.17.1/jackson-datatype-jdk8-2.17.1.jar:/Users/benjie/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.17.1/jackson-datatype-jsr310-2.17.1.jar:/Users/benjie/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.17.1/jackson-module-parameter-names-2.17.1.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/3.3.0/spring-boot-starter-tomcat-3.3.0.jar:/Users/benjie/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.24/tomcat-embed-core-10.1.24.jar:/Users/benjie/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.24/tomcat-embed-websocket-10.1.24.jar:/Users/benjie/.m2/repository/org/springframework/spring-web/6.1.8/spring-web-6.1.8.jar:/Users/benjie/.m2/repository/org/springframework/spring-beans/6.1.8/spring-beans-6.1.8.jar:/Users/benjie/.m2/repository/io/micrometer/micrometer-observation/1.13.0/micrometer-observation-1.13.0.jar:/Users/benjie/.m2/repository/io/micrometer/micrometer-commons/1.13.0/micrometer-commons-1.13.0.jar:/Users/benjie/.m2/repository/org/springframework/spring-webmvc/6.1.8/spring-webmvc-6.1.8.jar:/Users/benjie/.m2/repository/org/springframework/spring-context/6.1.8/spring-context-6.1.8.jar:/Users/benjie/.m2/repository/org/springframework/spring-expression/6.1.8/spring-expression-6.1.8.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa/3.3.0/spring-boot-starter-data-jpa-3.3.0.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-starter-aop/3.3.0/spring-boot-starter-aop-3.3.0.jar:/Users/benjie/.m2/repository/org/aspectj/aspectjweaver/1.9.22/aspectjweaver-1.9.22.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/3.3.0/spring-boot-starter-jdbc-3.3.0.jar:/Users/benjie/.m2/repository/com/zaxxer/HikariCP/5.1.0/HikariCP-5.1.0.jar:/Users/benjie/.m2/repository/org/springframework/spring-jdbc/6.1.8/spring-jdbc-6.1.8.jar:/Users/benjie/.m2/repository/org/hibernate/orm/hibernate-core/6.5.2.Final/hibernate-core-6.5.2.Final.jar:/Users/benjie/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.1.0/jakarta.persistence-api-3.1.0.jar:/Users/benjie/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/Users/benjie/.m2/repository/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.jar:/Users/benjie/.m2/repository/org/hibernate/common/hibernate-commons-annotations/6.0.6.Final/hibernate-commons-annotations-6.0.6.Final.jar:/Users/benjie/.m2/repository/io/smallrye/jandex/3.1.2/jandex-3.1.2.jar:/Users/benjie/.m2/repository/com/fasterxml/classmate/1.7.0/classmate-1.7.0.jar:/Users/benjie/.m2/repository/net/bytebuddy/byte-buddy/1.14.16/byte-buddy-1.14.16.jar:/Users/benjie/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.5/jaxb-runtime-4.0.5.jar:/Users/benjie/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.5/jaxb-core-4.0.5.jar:/Users/benjie/.m2/repository/org/eclipse/angus/angus-activation/2.0.2/angus-activation-2.0.2.jar:/Users/benjie/.m2/repository/org/glassfish/jaxb/txw2/4.0.5/txw2-4.0.5.jar:/Users/benjie/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar:/Users/benjie/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/Users/benjie/.m2/repository/org/antlr/antlr4-runtime/4.13.0/antlr4-runtime-4.13.0.jar:/Users/benjie/.m2/repository/org/springframework/data/spring-data-jpa/3.3.0/spring-data-jpa-3.3.0.jar:/Users/benjie/.m2/repository/org/springframework/data/spring-data-commons/3.3.0/spring-data-commons-3.3.0.jar:/Users/benjie/.m2/repository/org/springframework/spring-orm/6.1.8/spring-orm-6.1.8.jar:/Users/benjie/.m2/repository/org/springframework/spring-tx/6.1.8/spring-tx-6.1.8.jar:/Users/benjie/.m2/repository/org/slf4j/slf4j-api/2.0.13/slf4j-api-2.0.13.jar:/Users/benjie/.m2/repository/org/springframework/spring-aspects/6.1.8/spring-aspects-6.1.8.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-starter-security/3.3.0/spring-boot-starter-security-3.3.0.jar:/Users/benjie/.m2/repository/org/springframework/spring-aop/6.1.8/spring-aop-6.1.8.jar:/Users/benjie/.m2/repository/org/springframework/security/spring-security-config/6.3.0/spring-security-config-6.3.0.jar:/Users/benjie/.m2/repository/org/springframework/security/spring-security-core/6.3.0/spring-security-core-6.3.0.jar:/Users/benjie/.m2/repository/org/springframework/security/spring-security-crypto/6.3.0/spring-security-crypto-6.3.0.jar:/Users/benjie/.m2/repository/org/springframework/security/spring-security-web/6.3.0/spring-security-web-6.3.0.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-starter-validation/3.3.0/spring-boot-starter-validation-3.3.0.jar:/Users/benjie/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/10.1.24/tomcat-embed-el-10.1.24.jar:/Users/benjie/.m2/repository/org/hibernate/validator/hibernate-validator/8.0.1.Final/hibernate-validator-8.0.1.Final.jar:/Users/benjie/.m2/repository/jakarta/validation/jakarta.validation-api/3.0.2/jakarta.validation-api-3.0.2.jar:/Users/benjie/.m2/repository/org/postgresql/postgresql/42.7.3/postgresql-42.7.3.jar:/Users/benjie/.m2/repository/org/checkerframework/checker-qual/3.42.0/checker-qual-3.42.0.jar:/Users/benjie/.m2/repository/org/liquibase/liquibase-core/4.27.0/liquibase-core-4.27.0.jar:/Users/benjie/.m2/repository/com/opencsv/opencsv/5.9/opencsv-5.9.jar:/Users/benjie/.m2/repository/org/apache/commons/commons-text/1.11.0/commons-text-1.11.0.jar:/Users/benjie/.m2/repository/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar:/Users/benjie/.m2/repository/org/yaml/snakeyaml/2.2/snakeyaml-2.2.jar:/Users/benjie/.m2/repository/javax/xml/bind/jaxb-api/2.3.1/jaxb-api-2.3.1.jar:/Users/benjie/.m2/repository/org/apache/commons/commons-lang3/3.14.0/commons-lang3-3.14.0.jar:/Users/benjie/.m2/repository/io/jsonwebtoken/jjwt-api/0.12.6/jjwt-api-0.12.6.jar:/Users/benjie/.m2/repository/io/jsonwebtoken/jjwt-impl/0.12.6/jjwt-impl-0.12.6.jar:/Users/benjie/.m2/repository/io/jsonwebtoken/jjwt-jackson/0.12.6/jjwt-jackson-0.12.6.jar:/Users/benjie/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.17.1/jackson-databind-2.17.1.jar:/Users/benjie/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.17.1/jackson-annotations-2.17.1.jar:/Users/benjie/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.17.1/jackson-core-2.17.1.jar:/Users/benjie/.m2/repository/org/springdoc/springdoc-openapi-starter-webmvc-ui/2.5.0/springdoc-openapi-starter-webmvc-ui-2.5.0.jar:/Users/benjie/.m2/repository/org/springdoc/springdoc-openapi-starter-webmvc-api/2.5.0/springdoc-openapi-starter-webmvc-api-2.5.0.jar:/Users/benjie/.m2/repository/org/springdoc/springdoc-openapi-starter-common/2.5.0/springdoc-openapi-starter-common-2.5.0.jar:/Users/benjie/.m2/repository/io/swagger/core/v3/swagger-core-jakarta/2.2.21/swagger-core-jakarta-2.2.21.jar:/Users/benjie/.m2/repository/io/swagger/core/v3/swagger-annotations-jakarta/2.2.21/swagger-annotations-jakarta-2.2.21.jar:/Users/benjie/.m2/repository/io/swagger/core/v3/swagger-models-jakarta/2.2.21/swagger-models-jakarta-2.2.21.jar:/Users/benjie/.m2/repository/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.17.1/jackson-dataformat-yaml-2.17.1.jar:/Users/benjie/.m2/repository/org/webjars/swagger-ui/5.13.0/swagger-ui-5.13.0.jar:/Users/benjie/.m2/repository/com/h2database/h2/2.2.224/h2-2.2.224.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.3.0/spring-boot-starter-test-3.3.0.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-test/3.3.0/spring-boot-test-3.3.0.jar:/Users/benjie/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.3.0/spring-boot-test-autoconfigure-3.3.0.jar:/Users/benjie/.m2/repository/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar:/Users/benjie/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.2/jakarta.xml.bind-api-4.0.2.jar:/Users/benjie/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.3/jakarta.activation-api-2.1.3.jar:/Users/benjie/.m2/repository/net/minidev/json-smart/2.5.1/json-smart-2.5.1.jar:/Users/benjie/.m2/repository/net/minidev/accessors-smart/2.5.1/accessors-smart-2.5.1.jar:/Users/benjie/.m2/repository/org/ow2/asm/asm/9.6/asm-9.6.jar:/Users/benjie/.m2/repository/org/assertj/assertj-core/3.25.3/assertj-core-3.25.3.jar:/Users/benjie/.m2/repository/org/awaitility/awaitility/4.2.1/awaitility-4.2.1.jar:/Users/benjie/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/benjie/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.2/junit-jupiter-5.10.2.jar:/Users/benjie/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.2/junit-jupiter-api-5.10.2.jar:/Users/benjie/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/benjie/.m2/repository/org/junit/platform/junit-platform-commons/1.10.2/junit-platform-commons-1.10.2.jar:/Users/benjie/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/benjie/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.2/junit-jupiter-params-5.10.2.jar:/Users/benjie/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.2/junit-jupiter-engine-5.10.2.jar:/Users/benjie/.m2/repository/org/junit/platform/junit-platform-engine/1.10.2/junit-platform-engine-1.10.2.jar:/Users/benjie/.m2/repository/org/mockito/mockito-core/5.11.0/mockito-core-5.11.0.jar:/Users/benjie/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.16/byte-buddy-agent-1.14.16.jar:/Users/benjie/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/Users/benjie/.m2/repository/org/mockito/mockito-junit-jupiter/5.11.0/mockito-junit-jupiter-5.11.0.jar:/Users/benjie/.m2/repository/org/skyscreamer/jsonassert/1.5.1/jsonassert-1.5.1.jar:/Users/benjie/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/Users/benjie/.m2/repository/org/springframework/spring-core/6.1.8/spring-core-6.1.8.jar:/Users/benjie/.m2/repository/org/springframework/spring-jcl/6.1.8/spring-jcl-6.1.8.jar:/Users/benjie/.m2/repository/org/springframework/spring-test/6.1.8/spring-test-6.1.8.jar:/Users/benjie/.m2/repository/org/xmlunit/xmlunit-core/2.9.1/xmlunit-core-2.9.1.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/benjie"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2026-08-18"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/benjie/projects/logistics"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="FILE_LOG_CHARSET" value="UTF-8"/>
+    <property name="java.awt.headless" value="true"/>
+    <property name="apple.awt.application.name" value="ForkedBooter"/>
+    <property name="surefire.real.class.path" value="/Users/benjie/projects/logistics/target/surefire/surefirebooter-20261012235218511_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="21.0.12.1+1-LTS"/>
+    <property name="user.name" value="benjie"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="15.7.9"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Temurin-21.0.12.1+1"/>
+    <property name="localRepository" value="/Users/benjie/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
+    <property name="java.io.tmpdir" value="/var/folders/5t/3m0q21tx0d7fvdscl16s2m240000gr/T/"/>
+    <property name="catalina.home" value="/private/var/folders/5t/3m0q21tx0d7fvdscl16s2m240000gr/T/tomcat.0.16445541527843456620"/>
+    <property name="com.zaxxer.hikari.pool_number" value="1"/>
+    <property name="java.version" value="21.0.12.1"/>
+    <property name="user.dir" value="/Users/benjie/projects/logistics"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="PID" value="2472"/>
+    <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
+    <property name="catalina.base" value="/private/var/folders/5t/3m0q21tx0d7fvdscl16s2m240000gr/T/tomcat.0.16445541527843456620"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/benjie/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Eclipse Adoptium"/>
+    <property name="java.vm.version" value="21.0.12.1+1-LTS"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="java.class.version" value="65.0"/>
+  </properties>
+  <testcase name="createFulfillmentShipment_companyCarrier_autoGeneratesTrackingNumber" classname="com.logistics.system.shipment.controller.ShipmentControllerIntegrationTest" time="0.344">
+    <system-out><![CDATA[2026-10-12T23:52:44.503+08:00  INFO 2472 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.logistics.system.shipment.controller.ShipmentControllerIntegrationTest]: ShipmentControllerIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-12T23:52:44.528+08:00  INFO 2472 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.logistics.system.LogisticsApplication for test class com.logistics.system.shipment.controller.ShipmentControllerIntegrationTest
+2026-10-12T23:52:44.604+08:00  INFO 2472 --- [o-auto-1-exec-8] c.l.system.security.service.AuthService  : User registered: email=shipment-it@example.com
+2026-10-12T23:52:44.610+08:00  INFO 2472 --- [o-auto-1-exec-9] c.l.s.shipment.service.CarrierService    : Carrier created: id=23, code=OWN-ad703a, companyOwned=true
+2026-10-12T23:52:44.616+08:00  INFO 2472 --- [-auto-1-exec-10] c.l.s.shipment.service.CarrierService    : Carrier created: id=24, code=DHL-88b810, companyOwned=false
+2026-10-12T23:52:44.622+08:00  INFO 2472 --- [o-auto-1-exec-1] c.l.s.w.service.WarehouseService         : Warehouse created: id=22, code=WH-SHP-12418e
+2026-10-12T23:52:44.628+08:00  INFO 2472 --- [o-auto-1-exec-2] c.l.s.inventory.service.ProductService   : Product created: id=25, sku=SKU-SHP-2ab6b1
+2026-10-12T23:52:44.636+08:00  INFO 2472 --- [o-auto-1-exec-3] c.l.s.i.service.InventoryService         : Stock received: productId=25, warehouseId=22, qty=100
+2026-10-12T23:52:44.643+08:00  INFO 2472 --- [o-auto-1-exec-4] c.l.s.order.service.CustomerService      : Customer created: id=28, email=shp-cust-bc6dc573-5ba8-4320-ba94-d30b67532e27@example.com
+2026-10-12T23:52:44.650+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.system.order.service.OrderService    : Order created: id=19, customerId=28, items=1
+2026-10-12T23:52:44.650+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.s.i.event.InventoryEventListener     : Order created event received: orderId=19, items=1
+2026-10-12T23:52:44.655+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.s.i.service.InventoryService         : Stock reserved: productId=25, warehouseId=22, qty=5, orderId=19
+2026-10-12T23:52:44.656+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.s.i.event.InventoryEventListener     : All stock reserved for orderId=19
+2026-10-12T23:52:44.656+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.s.order.event.OrderEventListener     : Stock reserved event received: orderId=19
+2026-10-12T23:52:44.656+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.system.order.service.OrderService    : Order stock reserved: id=19
+2026-10-12T23:52:44.868+08:00  INFO 2472 --- [o-auto-1-exec-6] c.l.s.shipment.service.ShipmentService   : Shipment created: id=10, type=FULFILLMENT, trackingNumber=TRK-20261012-00006
+2026-10-12T23:52:44.868+08:00  INFO 2472 --- [o-auto-1-exec-6] c.l.s.order.event.OrderEventListener     : Shipment created event received: shipmentId=10, orderId=19
+2026-10-12T23:52:44.869+08:00  INFO 2472 --- [o-auto-1-exec-6] c.l.system.order.service.OrderService    : Order ready to ship: id=19
+2026-10-12T23:52:44.871+08:00  INFO 2472 --- [o-auto-1-exec-6] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=10, status=CREATED
+]]></system-out>
+  </testcase>
+  <testcase name="createFulfillmentShipment_orderTransitionsToReadyToShip" classname="com.logistics.system.shipment.controller.ShipmentControllerIntegrationTest" time="0.414">
+    <system-out><![CDATA[2026-10-12T23:52:44.966+08:00  INFO 2472 --- [o-auto-1-exec-8] c.l.system.security.service.AuthService  : User logged in: email=shipment-it@example.com
+2026-10-12T23:52:44.972+08:00  INFO 2472 --- [o-auto-1-exec-9] c.l.s.shipment.service.CarrierService    : Carrier created: id=25, code=OWN-90dc86, companyOwned=true
+2026-10-12T23:52:44.986+08:00  INFO 2472 --- [-auto-1-exec-10] c.l.s.shipment.service.CarrierService    : Carrier created: id=26, code=DHL-83cb96, companyOwned=false
+2026-10-12T23:52:44.996+08:00  INFO 2472 --- [o-auto-1-exec-1] c.l.s.w.service.WarehouseService         : Warehouse created: id=23, code=WH-SHP-de0d28
+2026-10-12T23:52:45.003+08:00  INFO 2472 --- [o-auto-1-exec-2] c.l.s.inventory.service.ProductService   : Product created: id=26, sku=SKU-SHP-fe1472
+2026-10-12T23:52:45.034+08:00  INFO 2472 --- [o-auto-1-exec-3] c.l.s.i.service.InventoryService         : Stock received: productId=26, warehouseId=23, qty=100
+2026-10-12T23:52:45.049+08:00  INFO 2472 --- [o-auto-1-exec-4] c.l.s.order.service.CustomerService      : Customer created: id=29, email=shp-cust-676e1a6e-82d5-4bb7-b33a-6a688af0c829@example.com
+2026-10-12T23:52:45.057+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.system.order.service.OrderService    : Order created: id=20, customerId=29, items=1
+2026-10-12T23:52:45.058+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.s.i.event.InventoryEventListener     : Order created event received: orderId=20, items=1
+2026-10-12T23:52:45.065+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.s.i.service.InventoryService         : Stock reserved: productId=26, warehouseId=23, qty=5, orderId=20
+2026-10-12T23:52:45.065+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.s.i.event.InventoryEventListener     : All stock reserved for orderId=20
+2026-10-12T23:52:45.065+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.s.order.event.OrderEventListener     : Stock reserved event received: orderId=20
+2026-10-12T23:52:45.065+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.system.order.service.OrderService    : Order stock reserved: id=20
+2026-10-12T23:52:45.279+08:00  INFO 2472 --- [o-auto-1-exec-6] c.l.s.shipment.service.ShipmentService   : Shipment created: id=11, type=FULFILLMENT, trackingNumber=TRK-20261012-00007
+2026-10-12T23:52:45.280+08:00  INFO 2472 --- [o-auto-1-exec-6] c.l.s.order.event.OrderEventListener     : Shipment created event received: shipmentId=11, orderId=20
+2026-10-12T23:52:45.280+08:00  INFO 2472 --- [o-auto-1-exec-6] c.l.system.order.service.OrderService    : Order ready to ship: id=20
+2026-10-12T23:52:45.282+08:00  INFO 2472 --- [o-auto-1-exec-6] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=11, status=CREATED
+]]></system-out>
+  </testcase>
+  <testcase name="updateStatus_delivered_withProofOfDelivery_returns200" classname="com.logistics.system.shipment.controller.ShipmentControllerIntegrationTest" time="0.143">
+    <system-out><![CDATA[2026-10-12T23:52:45.369+08:00  INFO 2472 --- [o-auto-1-exec-9] c.l.system.security.service.AuthService  : User logged in: email=shipment-it@example.com
+2026-10-12T23:52:45.374+08:00  INFO 2472 --- [-auto-1-exec-10] c.l.s.shipment.service.CarrierService    : Carrier created: id=27, code=OWN-92859d, companyOwned=true
+2026-10-12T23:52:45.380+08:00  INFO 2472 --- [o-auto-1-exec-1] c.l.s.shipment.service.CarrierService    : Carrier created: id=28, code=DHL-b6f04c, companyOwned=false
+2026-10-12T23:52:45.386+08:00  INFO 2472 --- [o-auto-1-exec-2] c.l.s.shipment.service.ShipmentService   : Shipment created: id=12, type=STANDALONE, trackingNumber=EXT-9bbb1d05
+2026-10-12T23:52:45.387+08:00  INFO 2472 --- [o-auto-1-exec-2] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=12, status=CREATED
+2026-10-12T23:52:45.391+08:00  INFO 2472 --- [o-auto-1-exec-3] c.l.s.shipment.service.ShipmentService   : Shipment status updated: id=12, from=CREATED, to=PROCESSING
+2026-10-12T23:52:45.393+08:00  INFO 2472 --- [o-auto-1-exec-3] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=12, status=PROCESSING
+2026-10-12T23:52:45.397+08:00  INFO 2472 --- [o-auto-1-exec-4] c.l.s.shipment.service.ShipmentService   : Shipment status updated: id=12, from=PROCESSING, to=READY_FOR_PICKUP
+2026-10-12T23:52:45.399+08:00  INFO 2472 --- [o-auto-1-exec-4] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=12, status=READY_FOR_PICKUP
+2026-10-12T23:52:45.403+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.s.shipment.service.ShipmentService   : Shipment status updated: id=12, from=READY_FOR_PICKUP, to=PICKED_UP
+2026-10-12T23:52:45.406+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=12, status=PICKED_UP
+2026-10-12T23:52:45.411+08:00  INFO 2472 --- [o-auto-1-exec-6] c.l.s.shipment.service.ShipmentService   : Shipment status updated: id=12, from=PICKED_UP, to=IN_TRANSIT
+2026-10-12T23:52:45.412+08:00  INFO 2472 --- [o-auto-1-exec-6] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=12, status=IN_TRANSIT
+2026-10-12T23:52:45.417+08:00  INFO 2472 --- [o-auto-1-exec-7] c.l.s.shipment.service.ShipmentService   : Shipment status updated: id=12, from=IN_TRANSIT, to=ARRIVED_AT_HUB
+2026-10-12T23:52:45.418+08:00  INFO 2472 --- [o-auto-1-exec-7] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=12, status=ARRIVED_AT_HUB
+2026-10-12T23:52:45.423+08:00  INFO 2472 --- [o-auto-1-exec-8] c.l.s.shipment.service.ShipmentService   : Shipment status updated: id=12, from=ARRIVED_AT_HUB, to=OUT_FOR_DELIVERY
+2026-10-12T23:52:45.424+08:00  INFO 2472 --- [o-auto-1-exec-8] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=12, status=OUT_FOR_DELIVERY
+2026-10-12T23:52:45.429+08:00  INFO 2472 --- [o-auto-1-exec-9] c.l.s.shipment.service.ShipmentService   : Shipment status updated: id=12, from=OUT_FOR_DELIVERY, to=DELIVERED
+2026-10-12T23:52:45.430+08:00  INFO 2472 --- [o-auto-1-exec-9] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=12, status=DELIVERED
+]]></system-out>
+  </testcase>
+  <testcase name="updateStatus_failedShipment_returns422" classname="com.logistics.system.shipment.controller.ShipmentControllerIntegrationTest" time="0.142">
+    <system-out><![CDATA[2026-10-12T23:52:45.518+08:00  INFO 2472 --- [o-auto-1-exec-1] c.l.system.security.service.AuthService  : User logged in: email=shipment-it@example.com
+2026-10-12T23:52:45.523+08:00  INFO 2472 --- [o-auto-1-exec-2] c.l.s.shipment.service.CarrierService    : Carrier created: id=29, code=OWN-cda87b, companyOwned=true
+2026-10-12T23:52:45.529+08:00  INFO 2472 --- [o-auto-1-exec-3] c.l.s.shipment.service.CarrierService    : Carrier created: id=30, code=DHL-ac203a, companyOwned=false
+2026-10-12T23:52:45.535+08:00  INFO 2472 --- [o-auto-1-exec-4] c.l.s.shipment.service.ShipmentService   : Shipment created: id=13, type=STANDALONE, trackingNumber=TRK-20261012-00008
+2026-10-12T23:52:45.536+08:00  INFO 2472 --- [o-auto-1-exec-4] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=13, status=CREATED
+2026-10-12T23:52:45.541+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.s.shipment.service.ShipmentService   : Shipment status updated: id=13, from=CREATED, to=PROCESSING
+2026-10-12T23:52:45.543+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=13, status=PROCESSING
+2026-10-12T23:52:45.548+08:00  INFO 2472 --- [o-auto-1-exec-6] c.l.s.shipment.service.ShipmentService   : Shipment status updated: id=13, from=PROCESSING, to=READY_FOR_PICKUP
+2026-10-12T23:52:45.549+08:00  INFO 2472 --- [o-auto-1-exec-6] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=13, status=READY_FOR_PICKUP
+2026-10-12T23:52:45.555+08:00  INFO 2472 --- [o-auto-1-exec-7] c.l.s.shipment.service.ShipmentService   : Shipment status updated: id=13, from=READY_FOR_PICKUP, to=PICKED_UP
+2026-10-12T23:52:45.557+08:00  INFO 2472 --- [o-auto-1-exec-7] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=13, status=PICKED_UP
+2026-10-12T23:52:45.561+08:00  INFO 2472 --- [o-auto-1-exec-8] c.l.s.shipment.service.ShipmentService   : Shipment status updated: id=13, from=PICKED_UP, to=IN_TRANSIT
+2026-10-12T23:52:45.563+08:00  INFO 2472 --- [o-auto-1-exec-8] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=13, status=IN_TRANSIT
+2026-10-12T23:52:45.567+08:00  INFO 2472 --- [o-auto-1-exec-9] c.l.s.shipment.service.ShipmentService   : Shipment status updated: id=13, from=IN_TRANSIT, to=FAILED
+2026-10-12T23:52:45.568+08:00  INFO 2472 --- [o-auto-1-exec-9] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=13, status=FAILED
+]]></system-out>
+  </testcase>
+  <testcase name="createFulfillmentShipment_thirdPartyCarrier_requiresTrackingNumber" classname="com.logistics.system.shipment.controller.ShipmentControllerIntegrationTest" time="0.341">
+    <system-out><![CDATA[2026-10-12T23:52:45.655+08:00  INFO 2472 --- [o-auto-1-exec-2] c.l.system.security.service.AuthService  : User logged in: email=shipment-it@example.com
+2026-10-12T23:52:45.661+08:00  INFO 2472 --- [o-auto-1-exec-3] c.l.s.shipment.service.CarrierService    : Carrier created: id=31, code=OWN-d499dd, companyOwned=true
+2026-10-12T23:52:45.666+08:00  INFO 2472 --- [o-auto-1-exec-4] c.l.s.shipment.service.CarrierService    : Carrier created: id=32, code=DHL-a9b0dc, companyOwned=false
+2026-10-12T23:52:45.672+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.s.w.service.WarehouseService         : Warehouse created: id=24, code=WH-SHP-4dc1eb
+2026-10-12T23:52:45.678+08:00  INFO 2472 --- [o-auto-1-exec-6] c.l.s.inventory.service.ProductService   : Product created: id=27, sku=SKU-SHP-915af3
+2026-10-12T23:52:45.685+08:00  INFO 2472 --- [o-auto-1-exec-7] c.l.s.i.service.InventoryService         : Stock received: productId=27, warehouseId=24, qty=100
+2026-10-12T23:52:45.691+08:00  INFO 2472 --- [o-auto-1-exec-8] c.l.s.order.service.CustomerService      : Customer created: id=30, email=shp-cust-5b62a2fa-8f3f-47f2-94e2-763719eb3ba0@example.com
+2026-10-12T23:52:45.697+08:00  INFO 2472 --- [o-auto-1-exec-9] c.l.system.order.service.OrderService    : Order created: id=21, customerId=30, items=1
+2026-10-12T23:52:45.698+08:00  INFO 2472 --- [o-auto-1-exec-9] c.l.s.i.event.InventoryEventListener     : Order created event received: orderId=21, items=1
+2026-10-12T23:52:45.703+08:00  INFO 2472 --- [o-auto-1-exec-9] c.l.s.i.service.InventoryService         : Stock reserved: productId=27, warehouseId=24, qty=5, orderId=21
+2026-10-12T23:52:45.703+08:00  INFO 2472 --- [o-auto-1-exec-9] c.l.s.i.event.InventoryEventListener     : All stock reserved for orderId=21
+2026-10-12T23:52:45.703+08:00  INFO 2472 --- [o-auto-1-exec-9] c.l.s.order.event.OrderEventListener     : Stock reserved event received: orderId=21
+2026-10-12T23:52:45.704+08:00  INFO 2472 --- [o-auto-1-exec-9] c.l.system.order.service.OrderService    : Order stock reserved: id=21
+]]></system-out>
+  </testcase>
+  <testcase name="updateStatus_cancelledShipment_returns422" classname="com.logistics.system.shipment.controller.ShipmentControllerIntegrationTest" time="0.117">
+    <system-out><![CDATA[2026-10-12T23:52:46.002+08:00  INFO 2472 --- [o-auto-1-exec-2] c.l.system.security.service.AuthService  : User logged in: email=shipment-it@example.com
+2026-10-12T23:52:46.008+08:00  INFO 2472 --- [o-auto-1-exec-3] c.l.s.shipment.service.CarrierService    : Carrier created: id=33, code=OWN-02d57e, companyOwned=true
+2026-10-12T23:52:46.014+08:00  INFO 2472 --- [o-auto-1-exec-4] c.l.s.shipment.service.CarrierService    : Carrier created: id=34, code=DHL-1f16dc, companyOwned=false
+2026-10-12T23:52:46.021+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.s.shipment.service.ShipmentService   : Shipment created: id=14, type=STANDALONE, trackingNumber=TRK-20261012-00009
+2026-10-12T23:52:46.022+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=14, status=CREATED
+2026-10-12T23:52:46.027+08:00  INFO 2472 --- [o-auto-1-exec-6] c.l.s.shipment.service.ShipmentService   : Shipment status updated: id=14, from=CREATED, to=CANCELLED
+2026-10-12T23:52:46.029+08:00  INFO 2472 --- [o-auto-1-exec-6] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=14, status=CANCELLED
+]]></system-out>
+  </testcase>
+  <testcase name="createFulfillmentShipment_orderNotStockReserved_returns422" classname="com.logistics.system.shipment.controller.ShipmentControllerIntegrationTest" time="0.327">
+    <system-out><![CDATA[2026-10-12T23:52:46.117+08:00  INFO 2472 --- [o-auto-1-exec-9] c.l.system.security.service.AuthService  : User logged in: email=shipment-it@example.com
+2026-10-12T23:52:46.122+08:00  INFO 2472 --- [-auto-1-exec-10] c.l.s.shipment.service.CarrierService    : Carrier created: id=35, code=OWN-b51b81, companyOwned=true
+2026-10-12T23:52:46.128+08:00  INFO 2472 --- [o-auto-1-exec-1] c.l.s.shipment.service.CarrierService    : Carrier created: id=36, code=DHL-99211f, companyOwned=false
+2026-10-12T23:52:46.134+08:00  INFO 2472 --- [o-auto-1-exec-2] c.l.s.order.service.CustomerService      : Customer created: id=31, email=shp-cust-norsvd-42b01e87-7b47-416e-9784-e157cce6701d@example.com
+2026-10-12T23:52:46.140+08:00  INFO 2472 --- [o-auto-1-exec-3] c.l.system.order.service.OrderService    : Order created: id=22, customerId=31, items=1
+2026-10-12T23:52:46.141+08:00  INFO 2472 --- [o-auto-1-exec-3] c.l.s.i.event.InventoryEventListener     : Order created event received: orderId=22, items=1
+2026-10-12T23:52:46.144+08:00  WARN 2472 --- [o-auto-1-exec-3] c.l.s.i.event.InventoryEventListener     : Stock validation failed: orderId=22, sku=SKU-NO-STOCK, reason=No inventory record found for SKU: SKU-NO-STOCK
+2026-10-12T23:52:46.144+08:00  INFO 2472 --- [o-auto-1-exec-3] c.l.s.order.event.OrderEventListener     : Stock reservation failed event received: orderId=22, failedSku=SKU-NO-STOCK, reason=No inventory record found for SKU: SKU-NO-STOCK
+2026-10-12T23:52:46.144+08:00  INFO 2472 --- [o-auto-1-exec-3] c.l.system.order.service.OrderService    : Order failed: id=22, reason=Stock reservation failed for SKU SKU-NO-STOCK: No inventory record found for SKU: SKU-NO-STOCK
+2026-10-12T23:52:46.145+08:00 ERROR 2472 --- [o-auto-1-exec-3] o.s.t.s.TransactionSynchronizationUtils  : TransactionSynchronization.afterCompletion threw exception
+
+org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:804) ~[spring-tx-6.1.8.jar:6.1.8]
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:758) ~[spring-tx-6.1.8.jar:6.1.8]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:676) ~[spring-tx-6.1.8.jar:6.1.8]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:426) ~[spring-tx-6.1.8.jar:6.1.8]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.8.jar:6.1.8]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.8.jar:6.1.8]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.8.jar:6.1.8]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.8.jar:6.1.8]
+	at com.logistics.system.inventory.event.InventoryEventListener$$SpringCGLIB$$0.onOrderCreated(<generated>) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.context.event.ApplicationListenerMethodAdapter.doInvoke(ApplicationListenerMethodAdapter.java:365) ~[spring-context-6.1.8.jar:6.1.8]
+	at org.springframework.context.event.ApplicationListenerMethodAdapter.processEvent(ApplicationListenerMethodAdapter.java:237) ~[spring-context-6.1.8.jar:6.1.8]
+	at org.springframework.transaction.event.TransactionalApplicationListenerSynchronization.processEventWithCallbacks(TransactionalApplicationListenerSynchronization.java:65) ~[spring-tx-6.1.8.jar:6.1.8]
+	at org.springframework.transaction.event.TransactionalApplicationListenerSynchronization$PlatformSynchronization.afterCompletion(TransactionalApplicationListenerSynchronization.java:118) ~[spring-tx-6.1.8.jar:6.1.8]
+	at org.springframework.transaction.support.TransactionSynchronizationUtils.invokeAfterCompletion(TransactionSynchronizationUtils.java:172) ~[spring-tx-6.1.8.jar:6.1.8]
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.invokeAfterCompletion(AbstractPlatformTransactionManager.java:1047) ~[spring-tx-6.1.8.jar:6.1.8]
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.triggerAfterCompletion(AbstractPlatformTransactionManager.java:1022) ~[spring-tx-6.1.8.jar:6.1.8]
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:839) ~[spring-tx-6.1.8.jar:6.1.8]
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:758) ~[spring-tx-6.1.8.jar:6.1.8]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:676) ~[spring-tx-6.1.8.jar:6.1.8]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:426) ~[spring-tx-6.1.8.jar:6.1.8]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.8.jar:6.1.8]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.8.jar:6.1.8]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.8.jar:6.1.8]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.8.jar:6.1.8]
+	at com.logistics.system.order.service.OrderService$$SpringCGLIB$$0.create(<generated>) ~[classes/:na]
+	at com.logistics.system.order.controller.OrderController.create(OrderController.java:37) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.24.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.24.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at com.logistics.system.security.filter.JwtAuthFilter.doFilterInternal(JwtAuthFilter.java:50) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.3.0.jar:6.3.0]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.8.jar:6.1.8]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.3.0.jar:6.3.0]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.8.jar:6.1.8]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.24.jar:10.1.24]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+]]></system-out>
+  </testcase>
+  <testcase name="updateStatus_validTransition_returns200" classname="com.logistics.system.shipment.controller.ShipmentControllerIntegrationTest" time="0.112">
+    <system-out><![CDATA[2026-10-12T23:52:46.449+08:00  INFO 2472 --- [o-auto-1-exec-6] c.l.system.security.service.AuthService  : User logged in: email=shipment-it@example.com
+2026-10-12T23:52:46.455+08:00  INFO 2472 --- [o-auto-1-exec-7] c.l.s.shipment.service.CarrierService    : Carrier created: id=37, code=OWN-5c1358, companyOwned=true
+2026-10-12T23:52:46.461+08:00  INFO 2472 --- [o-auto-1-exec-8] c.l.s.shipment.service.CarrierService    : Carrier created: id=38, code=DHL-ab6fd0, companyOwned=false
+2026-10-12T23:52:46.467+08:00  INFO 2472 --- [o-auto-1-exec-9] c.l.s.shipment.service.ShipmentService   : Shipment created: id=15, type=STANDALONE, trackingNumber=TRK-20261012-00010
+2026-10-12T23:52:46.468+08:00  INFO 2472 --- [o-auto-1-exec-9] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=15, status=CREATED
+2026-10-12T23:52:46.473+08:00  INFO 2472 --- [-auto-1-exec-10] c.l.s.shipment.service.ShipmentService   : Shipment status updated: id=15, from=CREATED, to=PROCESSING
+2026-10-12T23:52:46.474+08:00  INFO 2472 --- [-auto-1-exec-10] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=15, status=PROCESSING
+]]></system-out>
+  </testcase>
+  <testcase name="getByTrackingNumber_returns200" classname="com.logistics.system.shipment.controller.ShipmentControllerIntegrationTest" time="0.108">
+    <system-out><![CDATA[2026-10-12T23:52:46.555+08:00  INFO 2472 --- [o-auto-1-exec-2] c.l.system.security.service.AuthService  : User logged in: email=shipment-it@example.com
+2026-10-12T23:52:46.560+08:00  INFO 2472 --- [o-auto-1-exec-3] c.l.s.shipment.service.CarrierService    : Carrier created: id=39, code=OWN-e1b386, companyOwned=true
+2026-10-12T23:52:46.566+08:00  INFO 2472 --- [o-auto-1-exec-4] c.l.s.shipment.service.CarrierService    : Carrier created: id=40, code=DHL-fbbc79, companyOwned=false
+2026-10-12T23:52:46.572+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.s.shipment.service.ShipmentService   : Shipment created: id=16, type=STANDALONE, trackingNumber=TRK-20261012-00011
+2026-10-12T23:52:46.573+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=16, status=CREATED
+]]></system-out>
+  </testcase>
+  <testcase name="getById_nonExisting_returns404" classname="com.logistics.system.shipment.controller.ShipmentControllerIntegrationTest" time="0.093">
+    <system-out><![CDATA[2026-10-12T23:52:46.663+08:00  INFO 2472 --- [o-auto-1-exec-9] c.l.system.security.service.AuthService  : User logged in: email=shipment-it@example.com
+2026-10-12T23:52:46.668+08:00  INFO 2472 --- [-auto-1-exec-10] c.l.s.shipment.service.CarrierService    : Carrier created: id=41, code=OWN-38d7db, companyOwned=true
+2026-10-12T23:52:46.674+08:00  INFO 2472 --- [o-auto-1-exec-1] c.l.s.shipment.service.CarrierService    : Carrier created: id=42, code=DHL-53cf80, companyOwned=false
+]]></system-out>
+  </testcase>
+  <testcase name="createFulfillmentShipment_thirdPartyCarrier_withTrackingNumber_returns201" classname="com.logistics.system.shipment.controller.ShipmentControllerIntegrationTest" time="0.344">
+    <system-out><![CDATA[2026-10-12T23:52:46.756+08:00  INFO 2472 --- [o-auto-1-exec-4] c.l.system.security.service.AuthService  : User logged in: email=shipment-it@example.com
+2026-10-12T23:52:46.761+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.s.shipment.service.CarrierService    : Carrier created: id=43, code=OWN-60f688, companyOwned=true
+2026-10-12T23:52:46.767+08:00  INFO 2472 --- [o-auto-1-exec-6] c.l.s.shipment.service.CarrierService    : Carrier created: id=44, code=DHL-cddc7a, companyOwned=false
+2026-10-12T23:52:46.773+08:00  INFO 2472 --- [o-auto-1-exec-7] c.l.s.w.service.WarehouseService         : Warehouse created: id=25, code=WH-SHP-2e00c2
+2026-10-12T23:52:46.779+08:00  INFO 2472 --- [o-auto-1-exec-8] c.l.s.inventory.service.ProductService   : Product created: id=28, sku=SKU-SHP-3ab95f
+2026-10-12T23:52:46.786+08:00  INFO 2472 --- [o-auto-1-exec-9] c.l.s.i.service.InventoryService         : Stock received: productId=28, warehouseId=25, qty=100
+2026-10-12T23:52:46.791+08:00  INFO 2472 --- [-auto-1-exec-10] c.l.s.order.service.CustomerService      : Customer created: id=32, email=shp-cust-d3585a99-356e-45de-89e2-b38ad29a0826@example.com
+2026-10-12T23:52:46.797+08:00  INFO 2472 --- [o-auto-1-exec-1] c.l.system.order.service.OrderService    : Order created: id=23, customerId=32, items=1
+2026-10-12T23:52:46.798+08:00  INFO 2472 --- [o-auto-1-exec-1] c.l.s.i.event.InventoryEventListener     : Order created event received: orderId=23, items=1
+2026-10-12T23:52:46.803+08:00  INFO 2472 --- [o-auto-1-exec-1] c.l.s.i.service.InventoryService         : Stock reserved: productId=28, warehouseId=25, qty=5, orderId=23
+2026-10-12T23:52:46.803+08:00  INFO 2472 --- [o-auto-1-exec-1] c.l.s.i.event.InventoryEventListener     : All stock reserved for orderId=23
+2026-10-12T23:52:46.803+08:00  INFO 2472 --- [o-auto-1-exec-1] c.l.s.order.event.OrderEventListener     : Stock reserved event received: orderId=23
+2026-10-12T23:52:46.804+08:00  INFO 2472 --- [o-auto-1-exec-1] c.l.system.order.service.OrderService    : Order stock reserved: id=23
+2026-10-12T23:52:47.018+08:00  INFO 2472 --- [o-auto-1-exec-2] c.l.s.shipment.service.ShipmentService   : Shipment created: id=17, type=FULFILLMENT, trackingNumber=DHL-eba7ebf8
+2026-10-12T23:52:47.018+08:00  INFO 2472 --- [o-auto-1-exec-2] c.l.s.order.event.OrderEventListener     : Shipment created event received: shipmentId=17, orderId=23
+2026-10-12T23:52:47.019+08:00  INFO 2472 --- [o-auto-1-exec-2] c.l.system.order.service.OrderService    : Order ready to ship: id=23
+2026-10-12T23:52:47.022+08:00  INFO 2472 --- [o-auto-1-exec-2] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=17, status=CREATED
+]]></system-out>
+  </testcase>
+  <testcase name="getCarriers_unauthenticated_returns401" classname="com.logistics.system.shipment.controller.ShipmentControllerIntegrationTest" time="0.096">
+    <system-out><![CDATA[2026-10-12T23:52:47.105+08:00  INFO 2472 --- [o-auto-1-exec-4] c.l.system.security.service.AuthService  : User logged in: email=shipment-it@example.com
+2026-10-12T23:52:47.111+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.s.shipment.service.CarrierService    : Carrier created: id=45, code=OWN-f16692, companyOwned=true
+2026-10-12T23:52:47.117+08:00  INFO 2472 --- [o-auto-1-exec-6] c.l.s.shipment.service.CarrierService    : Carrier created: id=46, code=DHL-af0e5a, companyOwned=false
+]]></system-out>
+  </testcase>
+  <testcase name="createFulfillmentShipment_nonExistingOrder_returns404" classname="com.logistics.system.shipment.controller.ShipmentControllerIntegrationTest" time="0.096">
+    <system-out><![CDATA[2026-10-12T23:52:47.198+08:00  INFO 2472 --- [o-auto-1-exec-9] c.l.system.security.service.AuthService  : User logged in: email=shipment-it@example.com
+2026-10-12T23:52:47.203+08:00  INFO 2472 --- [-auto-1-exec-10] c.l.s.shipment.service.CarrierService    : Carrier created: id=47, code=OWN-1b315f, companyOwned=true
+2026-10-12T23:52:47.209+08:00  INFO 2472 --- [o-auto-1-exec-1] c.l.s.shipment.service.CarrierService    : Carrier created: id=48, code=DHL-bac56f, companyOwned=false
+]]></system-out>
+  </testcase>
+  <testcase name="createStandaloneShipment_noOrder_returns201" classname="com.logistics.system.shipment.controller.ShipmentControllerIntegrationTest" time="0.101">
+    <system-out><![CDATA[2026-10-12T23:52:47.298+08:00  INFO 2472 --- [o-auto-1-exec-4] c.l.system.security.service.AuthService  : User logged in: email=shipment-it@example.com
+2026-10-12T23:52:47.303+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.s.shipment.service.CarrierService    : Carrier created: id=49, code=OWN-0af599, companyOwned=true
+2026-10-12T23:52:47.309+08:00  INFO 2472 --- [o-auto-1-exec-6] c.l.s.shipment.service.CarrierService    : Carrier created: id=50, code=DHL-e22f99, companyOwned=false
+2026-10-12T23:52:47.315+08:00  INFO 2472 --- [o-auto-1-exec-7] c.l.s.shipment.service.ShipmentService   : Shipment created: id=18, type=STANDALONE, trackingNumber=TRK-20261012-00012
+2026-10-12T23:52:47.316+08:00  INFO 2472 --- [o-auto-1-exec-7] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=18, status=CREATED
+]]></system-out>
+  </testcase>
+  <testcase name="createCarrier_duplicateCode_returns422" classname="com.logistics.system.shipment.controller.ShipmentControllerIntegrationTest" time="0.102">
+    <system-out><![CDATA[2026-10-12T23:52:47.396+08:00  INFO 2472 --- [o-auto-1-exec-9] c.l.system.security.service.AuthService  : User logged in: email=shipment-it@example.com
+2026-10-12T23:52:47.402+08:00  INFO 2472 --- [-auto-1-exec-10] c.l.s.shipment.service.CarrierService    : Carrier created: id=51, code=OWN-273ac4, companyOwned=true
+2026-10-12T23:52:47.407+08:00  INFO 2472 --- [o-auto-1-exec-1] c.l.s.shipment.service.CarrierService    : Carrier created: id=52, code=DHL-b7adb1, companyOwned=false
+2026-10-12T23:52:47.413+08:00  INFO 2472 --- [o-auto-1-exec-2] c.l.s.shipment.service.CarrierService    : Carrier created: id=53, code=DUP-ce49c5, companyOwned=false
+]]></system-out>
+  </testcase>
+  <testcase name="createCarrier_validRequest_returns201" classname="com.logistics.system.shipment.controller.ShipmentControllerIntegrationTest" time="0.096">
+    <system-out><![CDATA[2026-10-12T23:52:47.498+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.system.security.service.AuthService  : User logged in: email=shipment-it@example.com
+2026-10-12T23:52:47.504+08:00  INFO 2472 --- [o-auto-1-exec-6] c.l.s.shipment.service.CarrierService    : Carrier created: id=54, code=OWN-decd5f, companyOwned=true
+2026-10-12T23:52:47.509+08:00  INFO 2472 --- [o-auto-1-exec-7] c.l.s.shipment.service.CarrierService    : Carrier created: id=55, code=DHL-1285a6, companyOwned=false
+2026-10-12T23:52:47.515+08:00  INFO 2472 --- [o-auto-1-exec-8] c.l.s.shipment.service.CarrierService    : Carrier created: id=56, code=CARR-92ccc1, companyOwned=false
+]]></system-out>
+  </testcase>
+  <testcase name="updateStatus_delivered_requiresProofOfDelivery_returns422" classname="com.logistics.system.shipment.controller.ShipmentControllerIntegrationTest" time="0.137">
+    <system-out><![CDATA[2026-10-12T23:52:47.594+08:00  INFO 2472 --- [-auto-1-exec-10] c.l.system.security.service.AuthService  : User logged in: email=shipment-it@example.com
+2026-10-12T23:52:47.600+08:00  INFO 2472 --- [o-auto-1-exec-1] c.l.s.shipment.service.CarrierService    : Carrier created: id=57, code=OWN-05f675, companyOwned=true
+2026-10-12T23:52:47.605+08:00  INFO 2472 --- [o-auto-1-exec-2] c.l.s.shipment.service.CarrierService    : Carrier created: id=58, code=DHL-63528d, companyOwned=false
+2026-10-12T23:52:47.612+08:00  INFO 2472 --- [o-auto-1-exec-3] c.l.s.shipment.service.ShipmentService   : Shipment created: id=19, type=STANDALONE, trackingNumber=TRK-20261012-00013
+2026-10-12T23:52:47.613+08:00  INFO 2472 --- [o-auto-1-exec-3] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=19, status=CREATED
+2026-10-12T23:52:47.621+08:00  INFO 2472 --- [o-auto-1-exec-4] c.l.s.shipment.service.ShipmentService   : Shipment status updated: id=19, from=CREATED, to=PROCESSING
+2026-10-12T23:52:47.622+08:00  INFO 2472 --- [o-auto-1-exec-4] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=19, status=PROCESSING
+2026-10-12T23:52:47.626+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.s.shipment.service.ShipmentService   : Shipment status updated: id=19, from=PROCESSING, to=READY_FOR_PICKUP
+2026-10-12T23:52:47.627+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=19, status=READY_FOR_PICKUP
+2026-10-12T23:52:47.631+08:00  INFO 2472 --- [o-auto-1-exec-6] c.l.s.shipment.service.ShipmentService   : Shipment status updated: id=19, from=READY_FOR_PICKUP, to=PICKED_UP
+2026-10-12T23:52:47.632+08:00  INFO 2472 --- [o-auto-1-exec-6] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=19, status=PICKED_UP
+2026-10-12T23:52:47.636+08:00  INFO 2472 --- [o-auto-1-exec-7] c.l.s.shipment.service.ShipmentService   : Shipment status updated: id=19, from=PICKED_UP, to=IN_TRANSIT
+2026-10-12T23:52:47.638+08:00  INFO 2472 --- [o-auto-1-exec-7] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=19, status=IN_TRANSIT
+2026-10-12T23:52:47.642+08:00  INFO 2472 --- [o-auto-1-exec-8] c.l.s.shipment.service.ShipmentService   : Shipment status updated: id=19, from=IN_TRANSIT, to=ARRIVED_AT_HUB
+2026-10-12T23:52:47.643+08:00  INFO 2472 --- [o-auto-1-exec-8] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=19, status=ARRIVED_AT_HUB
+]]></system-out>
+  </testcase>
+  <testcase name="createFulfillmentShipment_duplicateOrderId_returns422" classname="com.logistics.system.shipment.controller.ShipmentControllerIntegrationTest" time="0.353">
+    <system-out><![CDATA[2026-10-12T23:52:47.734+08:00  INFO 2472 --- [o-auto-1-exec-2] c.l.system.security.service.AuthService  : User logged in: email=shipment-it@example.com
+2026-10-12T23:52:47.740+08:00  INFO 2472 --- [o-auto-1-exec-3] c.l.s.shipment.service.CarrierService    : Carrier created: id=59, code=OWN-96468f, companyOwned=true
+2026-10-12T23:52:47.745+08:00  INFO 2472 --- [o-auto-1-exec-4] c.l.s.shipment.service.CarrierService    : Carrier created: id=60, code=DHL-9dc6eb, companyOwned=false
+2026-10-12T23:52:47.751+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.s.w.service.WarehouseService         : Warehouse created: id=26, code=WH-SHP-4033b6
+2026-10-12T23:52:47.757+08:00  INFO 2472 --- [o-auto-1-exec-6] c.l.s.inventory.service.ProductService   : Product created: id=29, sku=SKU-SHP-89f27e
+2026-10-12T23:52:47.764+08:00  INFO 2472 --- [o-auto-1-exec-7] c.l.s.i.service.InventoryService         : Stock received: productId=29, warehouseId=26, qty=100
+2026-10-12T23:52:47.770+08:00  INFO 2472 --- [o-auto-1-exec-8] c.l.s.order.service.CustomerService      : Customer created: id=33, email=shp-cust-0cac32c5-1eb5-4324-ad73-5bb01e7d8f21@example.com
+2026-10-12T23:52:47.777+08:00  INFO 2472 --- [o-auto-1-exec-9] c.l.system.order.service.OrderService    : Order created: id=24, customerId=33, items=1
+2026-10-12T23:52:47.777+08:00  INFO 2472 --- [o-auto-1-exec-9] c.l.s.i.event.InventoryEventListener     : Order created event received: orderId=24, items=1
+2026-10-12T23:52:47.782+08:00  INFO 2472 --- [o-auto-1-exec-9] c.l.s.i.service.InventoryService         : Stock reserved: productId=29, warehouseId=26, qty=5, orderId=24
+2026-10-12T23:52:47.783+08:00  INFO 2472 --- [o-auto-1-exec-9] c.l.s.i.event.InventoryEventListener     : All stock reserved for orderId=24
+2026-10-12T23:52:47.783+08:00  INFO 2472 --- [o-auto-1-exec-9] c.l.s.order.event.OrderEventListener     : Stock reserved event received: orderId=24
+2026-10-12T23:52:47.783+08:00  INFO 2472 --- [o-auto-1-exec-9] c.l.system.order.service.OrderService    : Order stock reserved: id=24
+2026-10-12T23:52:47.997+08:00  INFO 2472 --- [-auto-1-exec-10] c.l.s.shipment.service.ShipmentService   : Shipment created: id=20, type=FULFILLMENT, trackingNumber=TRK-20261012-00014
+2026-10-12T23:52:47.997+08:00  INFO 2472 --- [-auto-1-exec-10] c.l.s.order.event.OrderEventListener     : Shipment created event received: shipmentId=20, orderId=24
+2026-10-12T23:52:47.997+08:00  INFO 2472 --- [-auto-1-exec-10] c.l.system.order.service.OrderService    : Order ready to ship: id=24
+2026-10-12T23:52:47.999+08:00  INFO 2472 --- [-auto-1-exec-10] c.l.s.t.event.TrackingEventListener      : Tracking event recorded: shipmentId=20, status=CREATED
+]]></system-out>
+  </testcase>
+  <testcase name="createStandaloneShipment_missingCargoDescription_returns422" classname="com.logistics.system.shipment.controller.ShipmentControllerIntegrationTest" time="0.1">
+    <system-out><![CDATA[2026-10-12T23:52:48.088+08:00  INFO 2472 --- [o-auto-1-exec-3] c.l.system.security.service.AuthService  : User logged in: email=shipment-it@example.com
+2026-10-12T23:52:48.094+08:00  INFO 2472 --- [o-auto-1-exec-4] c.l.s.shipment.service.CarrierService    : Carrier created: id=61, code=OWN-1ca601, companyOwned=true
+2026-10-12T23:52:48.100+08:00  INFO 2472 --- [o-auto-1-exec-5] c.l.s.shipment.service.CarrierService    : Carrier created: id=62, code=DHL-edb321, companyOwned=false
+]]></system-out>
+  </testcase>
+</testsuite>

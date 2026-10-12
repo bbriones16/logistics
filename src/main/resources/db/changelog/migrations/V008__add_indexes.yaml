@@ -1,0 +1,103 @@
+databaseChangeLog:
+  - changeSet:
+      id: 008-add-orders-indexes
+      author: logistics
+      changes:
+        - createIndex:
+            tableName: orders
+            indexName: idx_orders_status
+            columns:
+              - column:
+                  name: status
+        - createIndex:
+            tableName: orders
+            indexName: idx_orders_created_at
+            columns:
+              - column:
+                  name: created_at
+        - createIndex:
+            tableName: orders
+            indexName: idx_orders_customer_id
+            columns:
+              - column:
+                  name: customer_id
+
+  - changeSet:
+      id: 008-add-order-items-indexes
+      author: logistics
+      changes:
+        - createIndex:
+            tableName: order_items
+            indexName: idx_order_items_order_id
+            columns:
+              - column:
+                  name: order_id
+
+  - changeSet:
+      id: 008-add-shipments-indexes
+      author: logistics
+      changes:
+        - createIndex:
+            tableName: shipments
+            indexName: idx_shipments_status
+            columns:
+              - column:
+                  name: status
+        - createIndex:
+            tableName: shipments
+            indexName: idx_shipments_created_at
+            columns:
+              - column:
+                  name: created_at
+        - createIndex:
+            tableName: shipments
+            indexName: idx_shipments_carrier_id
+            columns:
+              - column:
+                  name: carrier_id
+
+  - changeSet:
+      id: 008-add-deliveries-indexes
+      author: logistics
+      changes:
+        - createIndex:
+            tableName: deliveries
+            indexName: idx_deliveries_status
+            columns:
+              - column:
+                  name: status
+        - createIndex:
+            tableName: deliveries
+            indexName: idx_deliveries_scheduled_date
+            columns:
+              - column:
+                  name: scheduled_date
+        - createIndex:
+            tableName: deliveries
+            indexName: idx_deliveries_driver_id
+            columns:
+              - column:
+                  name: driver_id
+
+  - changeSet:
+      id: 008-add-stock-movements-indexes
+      author: logistics
+      changes:
+        - createIndex:
+            tableName: stock_movements
+            indexName: idx_stock_movements_product_id
+            columns:
+              - column:
+                  name: product_id
+        - createIndex:
+            tableName: stock_movements
+            indexName: idx_stock_movements_warehouse_id
+            columns:
+              - column:
+                  name: warehouse_id
+        - createIndex:
+            tableName: stock_movements
+            indexName: idx_stock_movements_created_at
+            columns:
+              - column:
+                  name: created_at

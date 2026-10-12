@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.logistics.system.shipment.controller.ShipmentControllerIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.606 s -- in com.logistics.system.shipment.controller.ShipmentControllerIntegrationTest

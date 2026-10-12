@@ -1,0 +1,53 @@
+databaseChangeLog:
+  - changeSet:
+      id: 007-create-tracking-events
+      author: logistics
+      changes:
+        - createTable:
+            tableName: tracking_events
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: shipment_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: tracking_number
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: location
+                  type: VARCHAR(255)
+              - column:
+                  name: notes
+                  type: VARCHAR(1000)
+              - column:
+                  name: occurred_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+        - createIndex:
+            tableName: tracking_events
+            indexName: idx_tracking_events_shipment_id
+            columns:
+              - column:
+                  name: shipment_id
+        - createIndex:
+            tableName: tracking_events
+            indexName: idx_tracking_events_tracking_number
+            columns:
+              - column:
+                  name: tracking_number
