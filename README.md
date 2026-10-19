@@ -174,6 +174,22 @@ CREATED → CONFIRMED → STOCK_RESERVED → PROCESSING → READY_TO_SHIP → SH
 
 ---
 
+## Future Capabilities
+
+### Shipping / Delivery Costing Engine
+
+The current MVP supports a simple `freightCost` field on shipments and `deliveryCost` on deliveries — manually entered values. A future costing engine would replace this with automated cost calculation based on:
+
+- Weight and dimensions (volumetric weight)
+- Origin / destination distance and zone
+- Carrier rate cards and fuel surcharges
+- Shipment medium (LAND, AIR, SEA) pricing tiers
+- Insurance and handling fees
+
+This would integrate with the Carrier module to store rate configurations and auto-populate costs at shipment/delivery creation time.
+
+---
+
 ## Error response format
 
 ```json

@@ -3,6 +3,7 @@ package com.logistics.system.delivery.domain;
 import com.logistics.system.shipment.domain.Shipment;
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
 
@@ -36,6 +37,9 @@ public class Delivery {
     @Column
     private String notes;
 
+    @Column(precision = 10, scale = 2)
+    private BigDecimal deliveryCost;
+
     @Column(nullable = false, updatable = false)
     private Instant createdAt = Instant.now();
 
@@ -52,5 +56,7 @@ public class Delivery {
     public void setScheduledDate(LocalDate scheduledDate) { this.scheduledDate = scheduledDate; }
     public String getNotes() { return notes; }
     public void setNotes(String notes) { this.notes = notes; }
+    public BigDecimal getDeliveryCost() { return deliveryCost; }
+    public void setDeliveryCost(BigDecimal deliveryCost) { this.deliveryCost = deliveryCost; }
     public Instant getCreatedAt() { return createdAt; }
 }

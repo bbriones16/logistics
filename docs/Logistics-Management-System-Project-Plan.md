@@ -278,7 +278,7 @@ This module handles **LAND shipments only** for the MVP. AIR and SEA fleet manag
 
 - **Driver** — name, license number, phone, status (AVAILABLE / ON_DELIVERY / OFF_DUTY)
 - **Vehicle** — plate number, type (MOTORCYCLE / VAN / TRUCK), capacity (kg), status (AVAILABLE / IN_USE / MAINTENANCE)
-- **Delivery** — links shipment + driver + vehicle, status, scheduled date, notes
+- **Delivery** — links shipment + driver + vehicle, status, scheduled date, delivery cost, notes
 
 ### Delivery Status Lifecycle
 
@@ -314,7 +314,7 @@ ASSIGNED → OUT_FOR_DELIVERY → DELIVERED
 | GET | /api/vehicles | List vehicles | ADMIN, OPERATIONS, DISPATCHER |
 | GET | /api/vehicles/{id} | Get vehicle | ADMIN, OPERATIONS, DISPATCHER |
 | GET | /api/vehicles/available | List available vehicles | ADMIN, OPERATIONS, DISPATCHER |
-| POST | /api/deliveries | Assign delivery | ADMIN, OPERATIONS, DISPATCHER |
+| POST | /api/deliveries | Assign delivery (accepts optional `deliveryCost`) | ADMIN, OPERATIONS, DISPATCHER |
 | GET | /api/deliveries | List deliveries (paginated) | ADMIN, OPERATIONS, DISPATCHER |
 | GET | /api/deliveries/{id} | Get delivery | ADMIN, OPERATIONS, DISPATCHER |
 | PUT | /api/deliveries/{id}/status | Update delivery status | ADMIN, OPERATIONS, DISPATCHER |
@@ -475,6 +475,7 @@ Eight Liquibase migrations, applied in order:
 | V006 | Drivers, vehicles, deliveries |
 | V007 | Tracking events (indexes on shipment_id, tracking_number) |
 | V008 | Performance indexes on orders, shipments, deliveries, stock_movements, order_items |
+| V009 | Add `delivery_cost` column to deliveries |
 
 ### V008 Indexes Added
 
@@ -591,6 +592,18 @@ Swagger UI: `http://localhost:8080/swagger-ui/index.html`
 
 ## 19. Future Capabilities
 
+### Shipping / Delivery Costing Engine
+
+The current MVP supports a simple `freightCost` field on shipments and `deliveryCost` on deliveries — manually entered values. A future costing engine would replace this with automated cost calculation based on:
+
+- Weight and dimensions (volumetric weight)
+- Origin / destination distance and zone
+- Carrier rate cards and fuel surcharges
+- Shipment medium (LAND, AIR, SEA) pricing tiers
+- Insurance and handling fees
+
+This would integrate with the Carrier module to store rate configurations and auto-populate costs at shipment/delivery creation time.
+
 ### Kafka Migration
 
 The event architecture is designed for Kafka readiness. Migration path:
@@ -658,7 +671,7 @@ Microservices where justified
 | Database Indexes | ✅ V008 — 13 indexes across 5 tables |
 | Test Coverage | ✅ 163 tests, 0 failures |
 | API Documentation | ✅ Swagger UI |
-| Database Migrations | ✅ Liquibase (8 migrations) |
+| Database Migrations | ✅ Liquibase (9 migrations) |
 | Docker | ✅ PostgreSQL via Docker Compose |
 | Frontend | ✅ React + TypeScript (Phase 8 complete) |
 | Source Control | ✅ GitHub — github.com/bbriones16/logistics |

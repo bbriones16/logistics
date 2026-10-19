@@ -108,7 +108,7 @@ class DeliveryControllerIntegrationTest extends BaseIntegrationTest {
         Long vehicleId = createVehicle();
 
         ResponseEntity<String> response = restTemplate.exchange("/api/deliveries", HttpMethod.POST,
-                new HttpEntity<>(new DeliveryDto.CreateRequest(shipmentId, driverId, vehicleId, null, null), authHeaders),
+                new HttpEntity<>(new DeliveryDto.CreateRequest(shipmentId, driverId, vehicleId, null, null, null), authHeaders),
                 String.class);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
@@ -140,7 +140,7 @@ class DeliveryControllerIntegrationTest extends BaseIntegrationTest {
         Long vehicleId = createVehicle();
 
         ResponseEntity<String> response = restTemplate.exchange("/api/deliveries", HttpMethod.POST,
-                new HttpEntity<>(new DeliveryDto.CreateRequest(shipmentId, driverId, vehicleId, null, null), authHeaders),
+                new HttpEntity<>(new DeliveryDto.CreateRequest(shipmentId, driverId, vehicleId, null, null, null), authHeaders),
                 String.class);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.UNPROCESSABLE_ENTITY);
@@ -154,7 +154,7 @@ class DeliveryControllerIntegrationTest extends BaseIntegrationTest {
         Long vehicleId = createVehicle();
 
         ResponseEntity<String> response = restTemplate.exchange("/api/deliveries", HttpMethod.POST,
-                new HttpEntity<>(new DeliveryDto.CreateRequest(shipmentId, driverId, vehicleId, null, null), authHeaders),
+                new HttpEntity<>(new DeliveryDto.CreateRequest(shipmentId, driverId, vehicleId, null, null, null), authHeaders),
                 String.class);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.UNPROCESSABLE_ENTITY);
@@ -166,13 +166,13 @@ class DeliveryControllerIntegrationTest extends BaseIntegrationTest {
         Long driverId1 = createDriver();
         Long vehicleId1 = createVehicle();
         restTemplate.exchange("/api/deliveries", HttpMethod.POST,
-                new HttpEntity<>(new DeliveryDto.CreateRequest(shipmentId, driverId1, vehicleId1, null, null), authHeaders),
+                new HttpEntity<>(new DeliveryDto.CreateRequest(shipmentId, driverId1, vehicleId1, null, null, null), authHeaders),
                 String.class);
 
         Long driverId2 = createDriver();
         Long vehicleId2 = createVehicle();
         ResponseEntity<String> response = restTemplate.exchange("/api/deliveries", HttpMethod.POST,
-                new HttpEntity<>(new DeliveryDto.CreateRequest(shipmentId, driverId2, vehicleId2, null, null), authHeaders),
+                new HttpEntity<>(new DeliveryDto.CreateRequest(shipmentId, driverId2, vehicleId2, null, null, null), authHeaders),
                 String.class);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.UNPROCESSABLE_ENTITY);
@@ -185,7 +185,7 @@ class DeliveryControllerIntegrationTest extends BaseIntegrationTest {
         Long vehicleId = createVehicle();
 
         Long deliveryId = objectMapper.readTree(restTemplate.exchange("/api/deliveries", HttpMethod.POST,
-                new HttpEntity<>(new DeliveryDto.CreateRequest(shipmentId, driverId, vehicleId, null, null), authHeaders),
+                new HttpEntity<>(new DeliveryDto.CreateRequest(shipmentId, driverId, vehicleId, null, null, null), authHeaders),
                 String.class).getBody()).get("id").asLong();
 
         Thread.sleep(200);
@@ -229,7 +229,7 @@ class DeliveryControllerIntegrationTest extends BaseIntegrationTest {
         Long vehicleId = createVehicle();
 
         Long deliveryId = objectMapper.readTree(restTemplate.exchange("/api/deliveries", HttpMethod.POST,
-                new HttpEntity<>(new DeliveryDto.CreateRequest(shipmentId, driverId, vehicleId, null, null), authHeaders),
+                new HttpEntity<>(new DeliveryDto.CreateRequest(shipmentId, driverId, vehicleId, null, null, null), authHeaders),
                 String.class).getBody()).get("id").asLong();
 
         Thread.sleep(200);

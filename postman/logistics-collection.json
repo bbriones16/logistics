@@ -525,7 +525,7 @@
             "url": { "raw": "{{baseUrl}}/api/deliveries", "host": ["{{baseUrl}}"], "path": ["api","deliveries"] },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"shipmentId\": 1,\n  \"driverId\": 1,\n  \"vehicleId\": 1,\n  \"scheduledDate\": \"2025-12-30\",\n  \"notes\": \"Call before delivery\"\n}"
+              "raw": "{\n  \"shipmentId\": 1,\n  \"driverId\": 1,\n  \"vehicleId\": 1,\n  \"scheduledDate\": \"2025-12-30\",\n  \"deliveryCost\": 45.00,\n  \"notes\": \"Call before delivery\"\n}"
             }
           }
         },

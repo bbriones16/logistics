@@ -98,6 +98,7 @@ public class DeliveryService {
         delivery.setDriver(driver);
         delivery.setVehicle(vehicle);
         delivery.setScheduledDate(request.scheduledDate());
+        delivery.setDeliveryCost(request.deliveryCost());
         delivery.setNotes(request.notes());
 
         Delivery saved = deliveryRepository.save(delivery);
@@ -152,6 +153,7 @@ public class DeliveryService {
                 d.getVehicle().getPlateNumber(),
                 d.getStatus(),
                 d.getScheduledDate(),
+                d.getDeliveryCost(),
                 d.getNotes(),
                 d.getCreatedAt()
         );

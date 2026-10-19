@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-delivery-cost
+      author: logistics
+      changes:
+        - addColumn:
+            tableName: deliveries
+            columns:
+              - column:
+                  name: delivery_cost
+                  type: DECIMAL(10,2)

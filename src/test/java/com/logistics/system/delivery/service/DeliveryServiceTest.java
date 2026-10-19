@@ -71,7 +71,7 @@ class DeliveryServiceTest {
         when(vehicleService.getVehicle(1L)).thenReturn(vehicle);
         when(deliveryRepository.save(any())).thenAnswer(inv -> inv.getArgument(0));
 
-        deliveryService.create(new DeliveryDto.CreateRequest(1L, 1L, 1L, null, null));
+        deliveryService.create(new DeliveryDto.CreateRequest(1L, 1L, 1L, null, null, null));
 
         verify(deliveryRepository).save(any(Delivery.class));
         ArgumentCaptor<Object> captor = ArgumentCaptor.forClass(Object.class);
@@ -84,7 +84,7 @@ class DeliveryServiceTest {
         shipment.getCarrier().setCompanyOwned(false);
         when(shipmentRepository.findById(1L)).thenReturn(Optional.of(shipment));
 
-        assertThatThrownBy(() -> deliveryService.create(new DeliveryDto.CreateRequest(1L, 1L, 1L, null, null)))
+        assertThatThrownBy(() -> deliveryService.create(new DeliveryDto.CreateRequest(1L, 1L, 1L, null, null, null)))
                 .isInstanceOf(BusinessException.class)
                 .hasMessageContaining("company-owned");
     }
@@ -94,7 +94,7 @@ class DeliveryServiceTest {
         shipment.setMedium(com.logistics.system.shipment.domain.ShipmentMedium.SEA);
         when(shipmentRepository.findById(1L)).thenReturn(Optional.of(shipment));
 
-        assertThatThrownBy(() -> deliveryService.create(new DeliveryDto.CreateRequest(1L, 1L, 1L, null, null)))
+        assertThatThrownBy(() -> deliveryService.create(new DeliveryDto.CreateRequest(1L, 1L, 1L, null, null, null)))
                 .isInstanceOf(BusinessException.class)
                 .hasMessageContaining("LAND");
     }
@@ -104,7 +104,7 @@ class DeliveryServiceTest {
         shipment.setStatus(ShipmentStatus.IN_TRANSIT);
         when(shipmentRepository.findById(1L)).thenReturn(Optional.of(shipment));
 
-        assertThatThrownBy(() -> deliveryService.create(new DeliveryDto.CreateRequest(1L, 1L, 1L, null, null)))
+        assertThatThrownBy(() -> deliveryService.create(new DeliveryDto.CreateRequest(1L, 1L, 1L, null, null, null)))
                 .isInstanceOf(BusinessException.class)
                 .hasMessageContaining("ARRIVED_AT_HUB");
     }
@@ -114,7 +114,7 @@ class DeliveryServiceTest {
         when(shipmentRepository.findById(1L)).thenReturn(Optional.of(shipment));
         when(deliveryRepository.existsByShipmentId(1L)).thenReturn(true);
 
-        assertThatThrownBy(() -> deliveryService.create(new DeliveryDto.CreateRequest(1L, 1L, 1L, null, null)))
+        assertThatThrownBy(() -> deliveryService.create(new DeliveryDto.CreateRequest(1L, 1L, 1L, null, null, null)))
                 .isInstanceOf(BusinessException.class)
                 .hasMessageContaining("already exists");
     }
@@ -126,7 +126,7 @@ class DeliveryServiceTest {
         when(deliveryRepository.existsByShipmentId(1L)).thenReturn(false);
         when(driverService.getDriver(1L)).thenReturn(driver);
 
-        assertThatThrownBy(() -> deliveryService.create(new DeliveryDto.CreateRequest(1L, 1L, 1L, null, null)))
+        assertThatThrownBy(() -> deliveryService.create(new DeliveryDto.CreateRequest(1L, 1L, 1L, null, null, null)))
                 .isInstanceOf(BusinessException.class)
                 .hasMessageContaining("Driver is not available");
     }
@@ -139,7 +139,7 @@ class DeliveryServiceTest {
         when(driverService.getDriver(1L)).thenReturn(driver);
         when(vehicleService.getVehicle(1L)).thenReturn(vehicle);
 
-        assertThatThrownBy(() -> deliveryService.create(new DeliveryDto.CreateRequest(1L, 1L, 1L, null, null)))
+        assertThatThrownBy(() -> deliveryService.create(new DeliveryDto.CreateRequest(1L, 1L, 1L, null, null, null)))
                 .isInstanceOf(BusinessException.class)
                 .hasMessageContaining("Vehicle is not available");
     }
@@ -148,7 +148,7 @@ class DeliveryServiceTest {
     void create_nonExistingShipment_throwsResourceNotFoundException() {
         when(shipmentRepository.findById(99L)).thenReturn(Optional.empty());
 
-        assertThatThrownBy(() -> deliveryService.create(new DeliveryDto.CreateRequest(99L, 1L, 1L, null, null)))
+        assertThatThrownBy(() -> deliveryService.create(new DeliveryDto.CreateRequest(99L, 1L, 1L, null, null, null)))
                 .isInstanceOf(ResourceNotFoundException.class);
     }
 
