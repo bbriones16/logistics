@@ -37,7 +37,8 @@ public class SecurityConfig {
             .csrf(AbstractHttpConfigurer::disable)
             .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .exceptionHandling(e -> e
-                .authenticationEntryPoint((req, res, ex) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED)))
+                .authenticationEntryPoint((req, res, ex) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED))
+                .accessDeniedHandler((req, res, ex) -> res.sendError(HttpServletResponse.SC_FORBIDDEN)))
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
@@ -54,6 +55,8 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.POST, "/api/drivers/**", "/api/vehicles/**", "/api/deliveries/**").hasAnyRole("ADMIN", "OPERATIONS", "DISPATCHER")
                 .requestMatchers(HttpMethod.PUT, "/api/deliveries/**").hasAnyRole("ADMIN", "OPERATIONS", "DISPATCHER")
                 .requestMatchers(HttpMethod.GET, "/api/reports/**").hasAnyRole("ADMIN", "OPERATIONS")
+                .requestMatchers("/api/admin/modules/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/api/me/modules").authenticated()
                 .anyRequest().authenticated()
             )
             .authenticationProvider(authenticationProvider())

@@ -1,4 +1,4 @@
-# Local Validations — Full End-to-End (Phases 1–7)
+# Local Validations — Full End-to-End (Phases 1–7 + Modular Extension Phase 1)
 
 Manual test run against a live PostgreSQL instance.  
 Date: 2026-10-13  
@@ -1121,3 +1121,279 @@ GET /api/vehicles/2    →  { "status": "AVAILABLE" }
 | Reporting | Inventory summary — products, warehouses, stock on hand, low-stock count | ✅ |
 | Reporting | Low-stock report — correct item identified | ✅ |
 | Reporting | Unauthenticated access → 401 | ✅ |
+
+---
+
+---
+
+# Modular Extension — Phase 1: Configuration Foundation
+
+Manual test run against Docker (postgres + backend only).  
+Date: 2026-10-20  
+Base URL: `http://localhost:8080`
+
+## Setup
+
+```bash
+cd docker && docker compose build
+docker compose up -d postgres backend
+```
+
+Liquibase applied 28 changesets on startup (V001–V012), including:
+- `V010` — `module_catalog` table + 6 seeded modules
+- `V011` — `module_config` table + DOMESTIC_LOGISTICS enabled, all others disabled
+- `V012` — `module_config_audit` table
+
+Registered `admin@logistics.com`, then upgraded to ADMIN role directly in DB:
+```sql
+UPDATE user_roles SET role = 'ADMIN'
+WHERE user_id = (SELECT id FROM users WHERE email = 'admin@logistics.com');
+```
+Re-logged in to obtain a fresh token with ADMIN role.
+
+---
+
+## Step 27 — List All Modules
+
+**Request**
+```http
+GET /api/admin/modules
+Authorization: Bearer <admin-token>
+```
+
+**Response** `200 OK`
+```json
+[
+  { "moduleKey": "DOMESTIC_LOGISTICS",        "moduleType": "CORE",        "enabled": true  },
+  { "moduleKey": "INTERNATIONAL_FREIGHT",      "moduleType": "BUSINESS",    "enabled": false },
+  { "moduleKey": "CUSTOMS_CLEARANCE",          "moduleType": "BUSINESS",    "enabled": false },
+  { "moduleKey": "FREIGHT_CUSTOMS_INTEGRATION","moduleType": "INTEGRATION", "enabled": false },
+  { "moduleKey": "DOMESTIC_HANDOFF",           "moduleType": "INTEGRATION", "enabled": false },
+  { "moduleKey": "CUSTOMER_PORTAL",            "moduleType": "BUSINESS",    "enabled": false }
+]
+```
+
+✅ All 6 modules returned.  
+✅ DOMESTIC_LOGISTICS is the only module enabled on fresh install.  
+✅ Module types (CORE, BUSINESS, INTEGRATION) correctly seeded.
+
+---
+
+## Step 28 — Get Module by Key
+
+### DOMESTIC_LOGISTICS (enabled by default)
+
+**Request**
+```http
+GET /api/admin/modules/DOMESTIC_LOGISTICS
+Authorization: Bearer <admin-token>
+```
+
+**Response** `200 OK`
+```json
+{
+  "moduleKey": "DOMESTIC_LOGISTICS",
+  "name": "Domestic Logistics",
+  "moduleType": "CORE",
+  "enabled": true,
+  "updatedBy": "system",
+  "version": 0
+}
+```
+
+✅ DOMESTIC_LOGISTICS enabled=true, seeded by `system`.
+
+### INTERNATIONAL_FREIGHT (disabled by default)
+
+**Response** `200 OK`
+```json
+{
+  "moduleKey": "INTERNATIONAL_FREIGHT",
+  "moduleType": "BUSINESS",
+  "enabled": false,
+  "updatedBy": "system",
+  "version": 0
+}
+```
+
+✅ INTERNATIONAL_FREIGHT enabled=false by default.
+
+### Unknown module key
+
+**Request**
+```http
+GET /api/admin/modules/UNKNOWN_MODULE
+```
+
+**Response** `404 Not Found`
+```json
+{
+  "status": 404,
+  "code": "RESOURCE_NOT_FOUND",
+  "message": "Module not found: UNKNOWN_MODULE"
+}
+```
+
+✅ 404 with `RESOURCE_NOT_FOUND` for unknown key.
+
+---
+
+## Step 29 — Enable a Module
+
+**Request**
+```http
+PUT /api/admin/modules/INTERNATIONAL_FREIGHT
+Authorization: Bearer <admin-token>
+Content-Type: application/json
+
+{ "enabled": true, "reason": "Enabling for manual validation" }
+```
+
+**Response** `200 OK`
+```json
+{
+  "moduleKey": "INTERNATIONAL_FREIGHT",
+  "enabled": true,
+  "updatedBy": "admin@logistics.com",
+  "updatedAt": "2026-10-20T04:52:52.245542880Z",
+  "version": 0
+}
+```
+
+✅ Module enabled. `updatedBy` set to the authenticated user's email.
+
+---
+
+## Step 30 — Disable a Module
+
+**Request**
+```http
+PUT /api/admin/modules/INTERNATIONAL_FREIGHT
+Content-Type: application/json
+
+{ "enabled": false, "reason": "Disabling after validation" }
+```
+
+**Response** `200 OK`
+```json
+{
+  "moduleKey": "INTERNATIONAL_FREIGHT",
+  "enabled": false,
+  "updatedBy": "admin@logistics.com",
+  "version": 1
+}
+```
+
+✅ Module disabled. `version` incremented to 1 (optimistic locking working).
+
+---
+
+## Step 31 — Audit Log
+
+**Request**
+```http
+GET /api/admin/modules/audit
+Authorization: Bearer <admin-token>
+```
+
+**Response** `200 OK`
+```json
+[
+  {
+    "id": 2,
+    "moduleKey": "INTERNATIONAL_FREIGHT",
+    "previousValue": "{\"enabled\":true}",
+    "newValue": "{\"enabled\":false}",
+    "changedBy": "admin@logistics.com",
+    "changedAt": "2026-10-20T04:53:38.082689Z",
+    "reason": "Disabling after validation"
+  },
+  {
+    "id": 1,
+    "moduleKey": "INTERNATIONAL_FREIGHT",
+    "previousValue": "{\"enabled\":false}",
+    "newValue": "{\"enabled\":true}",
+    "changedBy": "admin@logistics.com",
+    "changedAt": "2026-10-20T04:52:52.251425Z",
+    "reason": "Enabling for manual validation"
+  }
+]
+```
+
+✅ 2 audit records created — one per update, newest first.  
+✅ `previousValue` and `newValue` capture the full state as JSON.  
+✅ `changedBy` and `reason` correctly recorded.
+
+---
+
+## Step 32 — GET /api/me/modules
+
+### Authenticated user (any role)
+
+**Request**
+```http
+GET /api/me/modules
+Authorization: Bearer <admin-token>
+```
+
+**Response** `200 OK`
+```json
+[
+  {
+    "moduleKey": "DOMESTIC_LOGISTICS",
+    "name": "Domestic Logistics",
+    "description": "Existing domestic operations",
+    "moduleType": "CORE"
+  }
+]
+```
+
+✅ Only enabled modules returned (DOMESTIC_LOGISTICS only, since all others are disabled).  
+✅ Response is a slim view — no `enabled`, `version`, or `updatedBy` fields exposed to end users.
+
+### Unauthenticated
+
+```http
+GET /api/me/modules  →  401 Unauthorized
+```
+
+✅ Unauthenticated request rejected.
+
+---
+
+## Step 33 — Access Control
+
+| Scenario | Expected | Result |
+|---|---|---|
+| `GET /api/admin/modules` — no token | 401 | ✅ |
+| `GET /api/admin/modules` — OPERATIONS role | 401 | ✅ (access denied) |
+| `GET /api/me/modules` — OPERATIONS role | 200 | ✅ |
+| `GET /api/me/modules` — no token | 401 | ✅ |
+
+✅ Admin endpoints locked to ADMIN role.  
+✅ `/api/me/modules` accessible to any authenticated user.
+
+---
+
+## Modular Extension Phase 1 — Summary
+
+| Scenario | Result |
+|---|---|
+| Liquibase migrations V010–V012 applied cleanly on Docker startup | ✅ |
+| 6 modules seeded in `module_catalog` with correct types | ✅ |
+| DOMESTIC_LOGISTICS enabled=true on fresh install | ✅ |
+| All other modules disabled=false on fresh install | ✅ |
+| `GET /api/admin/modules` returns all 6 modules | ✅ |
+| `GET /api/admin/modules/{key}` returns correct module | ✅ |
+| `GET /api/admin/modules/UNKNOWN` returns 404 | ✅ |
+| `PUT /api/admin/modules/{key}` enables a module | ✅ |
+| `PUT /api/admin/modules/{key}` disables a module | ✅ |
+| `version` increments on each update (optimistic locking) | ✅ |
+| `updatedBy` set to authenticated user's email | ✅ |
+| `GET /api/admin/modules/audit` returns log newest-first | ✅ |
+| Audit records capture previousValue, newValue, changedBy, reason | ✅ |
+| `GET /api/me/modules` returns only enabled modules | ✅ |
+| `GET /api/me/modules` returns slim view (no internal fields) | ✅ |
+| Admin endpoints require ADMIN role | ✅ |
+| `/api/me/modules` accessible to any authenticated user | ✅ |
+| Unauthenticated requests return 401 | ✅ |

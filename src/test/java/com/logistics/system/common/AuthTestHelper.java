@@ -19,6 +19,11 @@ public class AuthTestHelper {
             return objectMapper.readTree(registerResponse.getBody()).get("token").asText();
         }
 
+        return loginToken(restTemplate, objectMapper, email, password);
+    }
+
+    public static String loginToken(TestRestTemplate restTemplate, ObjectMapper objectMapper,
+                                    String email, String password) throws Exception {
         AuthDto.LoginRequest login = new AuthDto.LoginRequest(email, password);
         ResponseEntity<String> loginResponse = restTemplate.postForEntity(LOGIN_URL, login, String.class);
         return objectMapper.readTree(loginResponse.getBody()).get("token").asText();
